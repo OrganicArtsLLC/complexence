@@ -1,0 +1,25 @@
+# ============================================================================
+#  Complexence OS — keep your PRIVATE instance data OUT of this PUBLIC repo.
+#  This repo is the method (spec + prompts + blank templates) only.
+#  See GUARDRAILS.md.
+# ============================================================================
+
+# Your working instance: captures, briefs, decisions, maps. NEVER tracked.
+/instance/
+
+# Local, private term denylist used by scripts/check-no-secrets.sh.
+# Keeps your sensitive words local — they never enter the public repo.
+.private-denylist
+
+# Secrets / environment
+.env
+.env.*
+*.key
+*.pem
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
