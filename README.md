@@ -57,7 +57,7 @@ That's a complete day. Everything else is optional refinement.
 spec/         the method specification (start here for the full model)
 agents/       role prompt contracts (Chief of Staff + 5 specialists)
 templates/    blank, shareable templates for each artifact type
-docs/         START-HERE walkthrough + how to stand up your own instance
+docs/         START-HERE, instantiation, and automation (capture→triage→feedback) guides
 scripts/      helper + the pre-commit secret guard
 instance/     YOUR private data — gitignored, never committed (you create this)
 ```
