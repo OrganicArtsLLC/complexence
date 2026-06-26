@@ -32,7 +32,7 @@ and structuring* them without long desk hours.
 
 - **Capture** by speaking (or typing) into a dated inbox file.
 - **Route** the whole inbox through one Chief of Staff prompt.
-- **Produce** artifacts via a capped set of specialist roles (six to start).
+- **Produce** artifacts via a capped set of roles (six to start: one router plus five specialists).
 - **Review** only a five-section daily brief — mostly just blockers.
 - **Govern** weekly: resolve decisions, synthesize, archive, set focus.
 

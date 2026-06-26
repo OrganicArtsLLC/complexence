@@ -70,12 +70,17 @@ seventh until the first six are boring and reliable.
 
 | Role | Function | Single Artifact |
 |---|---|---|
-| Chief of Staff | Classify, route, summarize, escalate | daily brief |
+| Chief of Staff | Classify, route, summarize, escalate | routing + escalations |
 | Daily Brief | Compose the constrained daily readout | `today/<date>` |
 | Cartographer | Build orientation maps | `domains/<topic>/map` |
 | Asset Steward | Track tracked-asset health and next actions | `assets/census` |
 | Publisher | Turn ideas into draft documents | `essays/drafts/<slug>` |
 | Critic | Adversarially review drafts before publish | `essays/reviews/<slug>` |
+
+The Chief of Staff and Daily Brief are two passes over the same day: the Chief of Staff
+triages and routes every inbox item (auto / review queue / escalate), and the Daily Brief
+composes the surviving signal into the constrained `today/<date>` readout. A minimal instance
+may run both as a single agent.
 
 Each role is defined by a prompt contract under `agents/`.
 

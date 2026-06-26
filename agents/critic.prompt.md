@@ -11,7 +11,7 @@ Your job is to find what's weak, not to praise. Be specific and concrete.
 
 ## Output
 
-Write `essays/reviews/<slug>-critique` with:
+Write `essays/reviews/<slug>` with:
 
 - **Verdict** — publish / revise / hold, in one line
 - **Strongest part** — one thing worth keeping intact
