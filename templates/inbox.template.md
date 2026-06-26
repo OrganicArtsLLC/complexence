@@ -3,13 +3,13 @@
 ## Entry
 
 - timestamp:
-- source: voice
+- source: manual   # manual (typed) | voice | import
 - raw:
 - optional-tags:
 
 ## Entry
 
 - timestamp:
-- source: voice
+- source: manual   # manual (typed) | voice | import
 - raw:
 - optional-tags:

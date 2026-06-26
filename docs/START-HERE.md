@@ -2,8 +2,8 @@
 
 This is the only page you need to run a day. If you're tired, read just the box.
 
-> **Minimum viable day.** If you do nothing else: open today's inbox file, speak
-> or type your thoughts into it, save. That's a valid day. Routing can wait up to
+> **Minimum viable day.** If you do nothing else: open today's inbox file, type
+> or speak your thoughts into it, save. That's a valid day. Routing can wait up to
 > 48 hours. Capture is the only thing you can't recover later.
 
 > ⚠️ Keep your real notes in `instance/` (gitignored). This repo is public — see
@@ -13,12 +13,16 @@ This is the only page you need to run a day. If you're tired, read just the box.
 
 ## The whole system in one breath
 
-You talk. One agent (Chief of Staff) sorts what you said into a short daily brief
-and hands the rest to specialist agents. You review only the exceptions.
+You capture a thought — **type it or speak it**. One agent (Chief of Staff) sorts
+what you wrote into a short daily brief and hands the rest to specialist agents.
+You review only the exceptions.
 
 ```text
-your voice -> inbox -> Chief of Staff -> today's brief -> you review only blockers
+a thought (typed or spoken) -> inbox -> Chief of Staff -> today's brief -> you review only blockers
 ```
+
+New here? **Type.** Voice is an optional door for later; typing is how you see the
+system work. Curious what you're really building? See [`layers.md`](./layers.md).
 
 ## One-time setup
 
@@ -73,6 +77,7 @@ ln -s ../../scripts/check-no-secrets.sh .git/hooks/pre-commit
 
 ## What's where
 
+- What you're really building (the layers): [`layers.md`](./layers.md)
 - Full method: [`spec/complexence-os.md`](../spec/complexence-os.md)
 - Role prompts: [`agents/`](../agents/)
 - Blank templates: [`templates/`](../templates/)

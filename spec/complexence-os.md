@@ -1,8 +1,8 @@
 # Complexence OS — Specification
 
 **Purpose:** Portable, facts-only specification for an operating method that turns
-voice-native thought into durable, structured artifacts using a small set of agent
-roles, prompts, and (later) scripts.
+raw thought — typed or spoken — into durable, structured artifacts using a small
+set of agent roles, prompts, and (later) scripts.
 **Status:** Public seed spec — instance-agnostic.
 **Scope:** Define the roles, contracts, cadence, and instantiation protocol so the
 same method can be stood up in any context (personal, work, a new project).
@@ -22,7 +22,7 @@ Complexence OS is the *machine* that runs the loop with minimal desk friction.
 One-line model:
 
 ```text
-voice in  ->  one router  ->  specialist roles  ->  durable artifacts  ->  weekly review
+a thought in  ->  one router  ->  specialist roles  ->  durable artifacts  ->  weekly review
 ```
 
 ## 2. Stack Placement
@@ -41,7 +41,7 @@ Complexence OS does not replace an orientation map; it *feeds and consumes* one
 
 | Principle | Meaning |
 |---|---|
-| Voice-first | Capture happens by speaking, not by sitting at a desk. |
+| Capture-first | Get the thought out of your head into a dated file — by typing or by speaking. Voice removes desk friction once you're fluent; typing is the clearer way to *learn* the system, because you watch exactly what goes in. Neither is required; pick what fits the moment. |
 | One interface | A single router (Chief of Staff) is the only thing the operator talks to. |
 | Artifact-first | Every role produces exactly one kind of durable file. |
 | Delegate by default | Roles act without asking; they escalate only exceptions. |
@@ -57,7 +57,7 @@ Capture -> Route -> Produce -> Review -> Govern -> (repeat)
 
 | Step | Owner | Input | Output |
 |---|---|---|---|
-| Capture | Operator (voice) | raw thought | inbox entries |
+| Capture | Operator (typing or voice) | raw thought | inbox entries |
 | Route | Chief of Staff | inbox | classified + routed items |
 | Produce | Specialist roles | routed items | domain / essay / asset artifacts |
 | Review | Operator | daily brief | accept / queue / block decisions |

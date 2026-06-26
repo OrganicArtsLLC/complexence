@@ -38,6 +38,10 @@ the content changes.
 
 ## Adoption phases
 
+These phases are how you **climb the layers** ([`layers.md`](./layers.md)) in your
+own area — by hand, by typing, one rung at a time. Don't automate a rung you
+haven't first run manually.
+
 | Phase | Goal | Exit condition |
 |---|---|---|
 | 0 — Prompt-only MVP | Prove the flow with no build | 7 straight days of inbox processing + 1 brief/day |
