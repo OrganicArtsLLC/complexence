@@ -1,0 +1,42 @@
+{
+  "id": "11111111-2222-4333-8444-555555555555",
+  "invariant": {
+    "essence": "Complexence: the capability and field of orienting inside complexity by preserving meaning across representations, run as a recursive loop.",
+    "constraints": [
+      "domain-independent (not tied to any single subject)",
+      "substrate-independent (works with any capable mind, human or machine)",
+      "meaning must survive transformation across representations"
+    ]
+  },
+  "representations": [
+    {
+      "projection_type": "text",
+      "media_type": "text/markdown",
+      "content": "The capability of standing inside a system larger than yourself and still choosing."
+    },
+    {
+      "projection_type": "code",
+      "media_type": "application/json",
+      "content": "{ \"loop\": \"Sigma -> omega -> mu -> pi -> eta -> alpha -> tau(Sigma) -> Sigma'\" }"
+    }
+  ],
+  "transformations": [
+    { "operator": "project", "input_representation": "invariant", "output_representation": "text" },
+    { "operator": "translate", "input_representation": "text", "output_representation": "code" }
+  ],
+  "feedback_loops": [
+    {
+      "evaluator": "external review (Gemini, Google, Grok)",
+      "metric": "semantic_drift",
+      "repaired_by": "correct"
+    }
+  ],
+  "history": [
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "sequence_index": 0,
+      "previous_form_hash": "genesis",
+      "delta": { "note": "coined as a capability; found a field underneath it" }
+    }
+  ]
+}

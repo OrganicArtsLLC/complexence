@@ -20,3 +20,27 @@ downstream. This is the machine half of what the **Critic** role
 two together are governance (Chief of Staff routes) → execution (specialists
 produce) → compliance (schema + Critic validate). Wire it as a step, not a new
 layer: `validate(artifact) against ℭ-schema` before `execute(ℭ)`.
+
+## Operators — `cognitive_form.py`
+
+A v0.1 reference implementation that turns the schema into runnable transforms.
+Stdlib-only; schema validation uses `jsonschema` if installed, else a structural check.
+
+- **Deterministic operators (real):** `validate` (the compliance check), `compose`,
+  `reflect` (ℭ operating on its own structure), and the mechanical management of
+  representations, transformations, feedback, and history.
+- **Semantic operators (model-backed interfaces):** `project`, `translate`, `compress`,
+  `expand`, `execute`, `correct`. Each delegates the meaning-bearing step to a
+  caller-supplied `transform` callable (an LLM or other model) and then calls
+  `invariant_preserved(...)` — a **stub**, because deciding whether two representations
+  are the same `ℭ` is the open isomorphism (science §10). The hook is where that
+  research plugs in; it is not pretended-solved.
+
+```bash
+python cognitive_form.py validate example.cform.json   # the compliance check
+python cognitive_form.py reflect  example.cform.json   # ℭ describing itself
+```
+
+`example.cform.json` is a worked instance (complexence as a Cognitive Form, fittingly
+recursive). Next on the ROADMAP: real `invariant_preserved` checks, then the
+measurement harness that tests meaning velocity.

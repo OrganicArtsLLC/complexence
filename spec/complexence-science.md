@@ -653,6 +653,23 @@ falsifiable claims.
 | Recursive depth | R | Number of meta-reasoning iterations | Metacognition |
 | Meaning velocity | — | Useful decisions/artifacts per unit time | (novel) |
 
+**Meaning velocity** has no off-the-shelf instrument, so it needs proxies.
+Candidates, strongest first:
+
+- **Shared-form vs. prompt coordination payoff** — N agents solving a task through a
+  shared Cognitive Form vs. independent prompts; measure accuracy, latency, and
+  semantic drift across rounds (the §9.4 multi-agent design). A direct, falsifiable
+  test of the central bet (§9.1).
+- **Time-to-usable-artifact** — capture → a durable artifact someone acts on.
+- **Decision-relevant information gain per unit time** — uncertainty reduction about
+  the *next action*, not raw information volume.
+- **Compression-preservation** — does a compressed form still let an agent
+  reconstruct the same decisions (§7.4)? Invariant per byte.
+- **Semantic-drift rate** — how fast meaning degrades across representation hops
+  without feedback (translation loss), measured over a corpus through time.
+
+Start with the first; it is a test, not a vibe.
+
 ### 9.4 Experimental designs
 
 - **Psychophysics** — vary information load; fit channel models to estimate `B`, `N`.

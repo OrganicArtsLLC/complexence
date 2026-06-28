@@ -212,4 +212,10 @@ To stand up a new instance:
 - Experience: reduced evening triage time; more voice ideas converted to durable
   outputs.
 
-**Last Updated:** 2026-06-25
+Concrete proxies, so "reduced desk friction" is validated with numbers, not feel:
+**% of days with the inbox processed and the brief reviewed**; **draft rewrite rate**
+(fraction of artifacts accepted without heavy edit); and **time-to-usable-artifact**
+(capture → an artifact you act on). These are the operating-method-level analog of
+the science's meaning-velocity proxies (`complexence-science.md` §9.3).
+
+**Last Updated:** 2026-06-28
