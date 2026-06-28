@@ -27,3 +27,7 @@ Thumbs.db
 # Python
 __pycache__/
 *.pyc
+
+# Experiment run artifacts (regenerate by running the scripts)
+src/*_results.json
+src/*_run.log
