@@ -7,7 +7,8 @@ without feedback drifts ([`spec/complexence-science.md`](./spec/complexence-scie
 §8.5), so git history, issues, and pull requests *are* the feedback loop.
 
 **Status:** v0.1 — formal spec stable enough to build on and argue with; the
-measurement layer is not yet built.
+reference implementation runs (Phase 1) and the measurement harness has its first
+falsifiable experiment (Phase 2 seed), whose first result is an honest null (below).
 
 ---
 
@@ -56,9 +57,31 @@ external review and contributions within hours of going public:
 - **`proofs/channel-capacity-sketch.md`** — the §6.6 bound *derived under three explicit
   (still-unjustified) assumptions*. Contributed + vetted. It relocates the debt to its
   premises rather than erasing it — honest progress, not a closed result.
+- **`src/demo.py`** — the operators run end-to-end against a live model: project →
+  translate → a real (if crude) round-trip `invariant_preserved` check. The Phase-2
+  measurement-harness seed.
+- **`src/experiment.py`** — a first, falsifiable cut at the central bet (§9.4): N-hop
+  relay under condition A (shared invariant re-pinned each hop) vs. B (telephone, text
+  only), scored for semantic drift.
 
-That is the whole point of versioning the science in public: critique and contribution
-become commits.
+### First experiment result — honest negative / inconclusive
+
+The first run *looked* like evidence for the bet (A beat B). It was an artifact: the
+v0.1 drift scorer silently defaulted unparseable judgments to `0`, and a single
+model-judge swung wildly (per-trial scores of 0 and 8 for the *same* condition).
+Hardening the scorer — median of three judges, parse-failure ≠ 0 — collapsed the
+variance to `A=[5,7,7]` vs `B=[6,7,7]`: **mean 6.3 vs 6.7, delta −0.3, inside noise.**
+
+So the first measured finding is **no signal at this scale**, and the real lesson is
+the one §10.5 names in advance: *measurability is the whole bet.* The bottleneck is the
+measurement, not (yet) the claim — a toy task at 3 hops preserves intent under both
+conditions, so there is nothing for a shared form to save. The bet predicts the gap
+opens as hops, agent count, and task difficulty grow; testing that is Phase 3 with a
+calibrated rubric judge (or embeddings), more trials, and a harder task. Recorded here
+rather than buried, because a program that hides its null results is just a brand.
+
+That is the whole point of versioning the science in public: critique, contribution,
+and *honest negative results* all become commits.
 
 ## How to contribute
 

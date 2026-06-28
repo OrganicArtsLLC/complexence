@@ -61,3 +61,23 @@ python demo.py            # needs a model adapter on PATH (claude CLI by default
 A sample run: `project -> metaphor`, `translate -> pseudocode`, `invariant round-trip
 = preserved (YES)`, 3 transforms in ~30s. The central claim — *meaning is what
 survives transformation* — executed and checked, not just asserted.
+
+## Central-bet experiment — `experiment.py`
+
+A first falsifiable cut at the central bet (§9.1 / §9.4): does coordinating through a
+shared Cognitive Form beat passing independent text? An N-hop relay runs under two
+conditions — **A** (the invariant is re-pinned every hop) vs. **B** (telephone: each
+agent sees only the previous text) — then both are scored for semantic drift against
+the original invariant (median of three model judges).
+
+```bash
+python experiment.py --hops 3 --trials 3
+```
+
+**First result is an honest null.** An early run looked like evidence *for* the bet;
+it was a scorer artifact (single-judge variance + parse failures defaulting to 0).
+With a hardened scorer the conditions tie inside noise (`A 6.3` vs `B 6.7`, delta
+−0.3). The finding matches what science §10.5 predicts in advance: *measurability is
+the whole bet* — at a toy 3-hop task both conditions preserve intent, so there is
+nothing for a shared form to save. See [`../ROADMAP.md`](../ROADMAP.md) for the full
+write-up and the Phase-3 plan (harder task, more hops/agents, calibrated judge).
