@@ -75,6 +75,13 @@ two meeting over your inbox. You moved from "instructions I follow" to "instruct
 that run." The better your Layer 1–2 contracts, the better this behaves — the
 abstraction below is what makes the abstraction above worth having.
 
+In an editor this rung gets a concrete shape: a **prompt file** you invoke by name.
+In VS Code with GitHub Copilot, `.github/prompts/complexence-triage.prompt.md`
+becomes `/complexence-triage` — a named, re-runnable, agentic prompt that runs over
+your files. A prompt you can fire by name *is* Layer 2 becoming Layer 3: a
+near-agent. The seed ships these ready to copy (one per role) in
+[`../editors/copilot/`](../editors/copilot/).
+
 ### Layer 4 — A runner of agents (the Chief of Staff)
 
 One orchestrator sits above the specialists and decides **which agent runs on
@@ -115,9 +122,15 @@ every morning.
 
 **Learn it by climbing one rung at a time, by hand, by typing.**
 
+Fastest way to feel rungs 1–3 at once: paste the bootstrap prompt
+([`bootstrap.md`](./bootstrap.md)) into an AI agent in your private repo — it sets
+your guardrails, then generates your `/complexence-*` prompt files. But understand
+each rung as it appears; don't let the convenience hide the ladder.
+
 1. Live at **Layer 1** until it's boring. Type a few thoughts, run the Chief of
-   Staff prompt over them, read the brief. Do it for a week
-   ([`START-HERE.md`](./START-HERE.md), Phase 0 in [`instantiate.md`](./instantiate.md)).
+   Staff prompt (or `/complexence-triage`) over them, read the brief. Do it for a
+   week ([`START-HERE.md`](./START-HERE.md), Phase 0 in
+   [`instantiate.md`](./instantiate.md)).
 2. Add **Layer 2** when one prompt is clearly doing several jobs — split it into
    the specialist roles in `agents/`.
 3. Reach **Layer 3–4** when running the contracts by hand is reliable and the only

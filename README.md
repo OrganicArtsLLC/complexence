@@ -1,7 +1,26 @@
-# Complexence OS
+# Complexence
 
-**An operating method that turns raw thought into durable, structured artifacts
-using a small set of agent roles, prompts, and blank templates.**
+**The capability of staying oriented inside complex systems and turning that
+orientation into coherent action — plus the method that runs it and the science
+under it.** One coined word, three altitudes, in one versioned repo.
+
+This repo is the canonical, open home of the whole stack:
+
+| Layer | What it is | Spec |
+|---|---|---|
+| **Capability** | orienting and navigating under load (the L0–L7 map) | [`spec/complexence-capability.md`](./spec/complexence-capability.md) |
+| **Operating method** | turn raw thought into durable artifacts with a few agent roles — *runnable today* (below) | [`spec/complexence-os.md`](./spec/complexence-os.md) |
+| **Foundation** | the formal science: an ontology, a recursive equation, two calculi, meaning velocity | [`spec/complexence-science.md`](./spec/complexence-science.md) |
+
+Narrative versions live on the blog — [Complexence](https://joshuaayson.com/2026/06/17/complexence/)
+(capability), [Complexence OS](https://joshuaayson.com/2026/06/25/complexence-os/)
+(method), [The Science of Complexence](https://joshuaayson.com/2026/06/28/science-of-complexence/)
+(foundation). The science is an **open research program**; its edges and direction
+live in [`ROADMAP.md`](./ROADMAP.md).
+
+---
+
+## What you can run today: Complexence OS
 
 You capture a thought — **by typing or by speaking**. One router agent — a *Chief
 of Staff* — sorts it into a short daily brief and hands the rest to specialist
@@ -77,13 +96,52 @@ which you reach by typing, today. Read the full walk-through in
 
 That's a complete day. Everything else is optional refinement.
 
+## Fastest start — let an agent unpack it (VS Code Copilot, Claude, Cursor)
+
+Prefer not to wire it up by hand? Paste this into a capable AI agent **inside your
+private working repo**. It sets your privacy guardrails first, asks for your
+context (it does *not* assume it already knows it), then generates your folders and
+your re-runnable `/complexence-*` prompts — customized to you. This is the seed
+"unpacking itself" into your own area.
+
+~~~text
+Stand up a private Complexence OS instance (github.com/OrganicArtsLLC/complexence)
+in THIS repo, which is my private area. Phases, in order:
+
+1) GUARDRAILS first: confirm this repo is private (else stop and ask); ask me what
+   is sensitive in my context and record it as a denylist; for routine work use
+   file edits only (no shell/network/sends), and keep outward actions as separate
+   steps I approve. Never write anything that identifies a real person/employer/
+   client into a file that could become public.
+2) GATHER (ask, don't guess): my context (personal/work/project); my categories and
+   what "asset" means to me; who owns decisions and what counts as "risk"; my
+   writing voice.
+3) BUILD in my area: folders inbox/ today/ decisions/ domains/ assets/ archive/
+   (+ essays/); .github/copilot-instructions.md from the seed's
+   editors/copilot/copilot-instructions.template.md (method + my schema +
+   guardrails, so it is always in context); and re-runnable prompt files in
+   .github/prompts/ — complexence-capture, -triage, -census, -map, -draft, -review
+   — based on editors/copilot/prompts/ and agents/. Keep the fixed contracts
+   identical (confidence rubric, routing >=90/70-89/<70, the five daily-brief
+   sections); change only the nouns.
+4) EXPLAIN as you go which layer each piece is (docs/layers.md), then tell me to
+   enable "chat.promptFiles" in VS Code and try /complexence-capture then
+   /complexence-triage.
+
+This repo is a seed; I am the system; my data stays here. Change nouns, keep method.
+~~~
+
+Annotated version + what it produces: [`docs/bootstrap.md`](./docs/bootstrap.md).
+Drop-in files to copy by hand instead: [`editors/copilot/`](./editors/copilot/).
+
 ## Repository layout
 
 ```text
 spec/         the method specification (start here for the full model)
 agents/       role prompt contracts (Chief of Staff + 5 specialists)
+editors/      drop-in editor integrations (VS Code Copilot prompt files + instructions)
 templates/    blank, shareable templates for each artifact type
-docs/         START-HERE, instantiation, and automation (capture→triage→feedback) guides
+docs/         START-HERE, layers, bootstrap, instantiation, automation guides
 scripts/      helper + the pre-commit secret guard
 instance/     YOUR private data — gitignored, never committed (you create this)
 ```

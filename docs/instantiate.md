@@ -4,6 +4,12 @@ An *instance* is one deployment of Complexence OS for a specific context — you
 personal life, a team at work, a single project. The method stays the same; only
 the content changes.
 
+> **Fast path:** instead of the manual steps below, paste the bootstrap prompt
+> ([`bootstrap.md`](./bootstrap.md)) into an AI agent in your private repo. It runs
+> the guardrails, gathers your context, and generates your folders and
+> `/complexence-*` prompt files for you. The manual steps are the same thing by
+> hand — do them if you want to feel each piece.
+
 ## Steps
 
 1. **Pick a private root.** Either use the gitignored `instance/` folder in this
@@ -17,7 +23,11 @@ the content changes.
    Add `essays/` only if you'll draft documents.
 
 3. **Copy the six role prompts** from `agents/` into your instance. Edit only the
-   *nouns* — what an "asset" is, which categories matter, who owns decisions.
+   *nouns* — what an "asset" is, which categories matter, who owns decisions. To
+   make them re-runnable in your editor, also copy
+   [`editors/copilot/`](../editors/copilot/) into your repo's `.github/` (prompt
+   files + a `copilot-instructions.md` that keeps the method and guardrails in
+   context). Then a role is a `/command`: `/complexence-triage`, `/complexence-map`, …
 
 4. **Localize the schema.** Adjust categories and the census noun to your context.
    At work, "asset" might mean services, dashboards, or runbooks.
