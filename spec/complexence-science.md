@@ -142,6 +142,57 @@ the thing the capability does.
 
 ---
 
+## 3a. Relation to prior work — what it shares, what is distinct
+
+A claim to a level above mathematics, logic, and computer science (§3) has obvious
+neighbors, and the honest move is to name them and say what is shared and what is
+new. The differentiation is a positioning claim to be *earned* by what Complexence
+predicts or unifies that extensions of these do not — the central bet (§9) is one
+such test — but the lines are stateable now.
+
+- **Active Inference / the Free Energy Principle (Friston).** The closest neighbor: a
+  formal, recursive perception–action loop in which an agent minimizes variational
+  free energy (surprise) through a generative model and belief updating. *Shared:*
+  the recursive loop, prediction, feedback, the agent-in-a-world. *Distinct:* the
+  Free Energy Principle theorizes how **one** agent's inference minimizes surprise,
+  in Bayesian mechanics over belief states; Complexence studies cognitive
+  **structure** domain- and substrate-independently across humans, machines, and
+  teams. Its object is the **Cognitive Form** — meaning invariant across
+  representations (§7) — which has no analog in Active Inference: that framework does
+  not theorize "the same meaning across text, diagram, code, and agent." Its figure
+  of merit is **meaning transfer between minds** (§8), not one agent's surprise. The
+  clean relation: Active Inference is a candidate theory of the *dynamics inside one
+  node* of the §5 loop; Complexence studies the forms moved around it. They compose;
+  they do not compete.
+- **OODA (Boyd).** *Shared:* the loop, and the centrality of Orientation (the L0–L7
+  map is orientation-heavy by design). *Distinct:* OODA is an informal strategic
+  heuristic — no ontology, no recursive equation, no representation-invariance, no
+  measurable quantities. The §5 loop is OODA's structure made formal; Theory B adds
+  the meaning layer it never had. OODA is the human strategic loop as a special case.
+- **Cynefin (Snowden).** *Shared:* navigating complexity, context-sensitivity.
+  *Distinct:* Cynefin classifies a situation's complexity regime so you know *how* to
+  act; Complexence is the process (loop + forms) you run *within* any regime. Cynefin
+  classifies the terrain; Complexence is how you navigate it.
+- **Cybernetics and predictive processing.** *Shared:* feedback-as-regulation
+  (Ashby's requisite variety is the ancestor of `Power × NoFeedback → Drift`) and
+  prediction-error minimization. *Distinct:* the representation-invariance and
+  meaning-velocity layers are in neither.
+- **Category theory and Laws of Form.** *Resonant, and a formalization target.* The
+  Cognitive Form — an invariant under projection, with projections that preserve it —
+  is category-theoretic in flavor (objects, structure-preserving maps); giving Theory
+  B precise categorical semantics is open, high-leverage work (§10). The ontology
+  begins at **distinction** (Δ, §4.1), Spencer-Brown's primitive in *Laws of Form*;
+  connecting the two is a live thread.
+
+**The distinct claim, in one line.** What Complexence asserts that the neighbors do
+not is a *domain-independent study of cognitive structure whose central object is the
+representation-invariant form and whose figure of merit is meaning transfer between
+human and machine minds.* The loop it shares with everyone; the **Cognitive Form and
+meaning velocity are the new ground**, and the field stands or falls on whether they
+buy predictions the neighbors cannot make (§9, §10).
+
+---
+
 ## 4. The foundational ontology
 
 The deepest question the dialogue reached: *what must exist before cognition is
