@@ -45,6 +45,21 @@ Phase 1 onward is the "devops the science" work: the spec gets a reference
 implementation, the implementation gets tests, the tests operationalize the claims,
 and the loop closes — `correct(ℭ, F)` producing the next version.
 
+## Landed so far (the loop in motion)
+
+The feedback the §8.5 argument predicts is already running — the published spec drew
+external review and contributions within hours of going public:
+
+- **`src/cognitive-form.schema.json`** — the Cognitive Form interchange format (Phase 1).
+  First draft contributed by Google Gemini against the public spec, then vetted here
+  (operator enum aligned to §7.3 — added `correct`; `$schema` URI fixed). MIT.
+- **`proofs/channel-capacity-sketch.md`** — the §6.6 bound *derived under three explicit
+  (still-unjustified) assumptions*. Contributed + vetted. It relocates the debt to its
+  premises rather than erasing it — honest progress, not a closed result.
+
+That is the whole point of versioning the science in public: critique and contribution
+become commits.
+
 ## How to contribute
 
 Issues and pull requests are the feedback term `F`. Argue with the spec, propose a

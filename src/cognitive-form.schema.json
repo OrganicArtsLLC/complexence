@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/OrganicArtsLLC/complexence/blob/main/src/cognitive-form.schema.json",
+  "title": "CognitiveForm",
+  "description": "Canonical structural schema for a domain-independent meaning-bearing form (ℭ). Instantiates Theory B, the Calculus of Cognitive Forms, where ℭ = (I, R, T, F, H): invariant identity, representations, transformations, feedback, history. See spec/complexence-science.md §7.",
+  "$comment": "Phase-1 reference-implementation artifact (ROADMAP). First draft contributed by Google Gemini against the published spec, then vetted: operator enum aligned to §7.3 (added 'correct'), $schema URI fixed. STATUS: candidate format; the projection logic that decides whether two representations are the same ℭ is unproven (the open isomorphism, science §10). Licensed MIT.",
+  "type": "object",
+  "required": ["id", "invariant", "representations", "transformations", "feedback_loops", "history"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Deterministic identifier derived from the invariant core identity (ι)."
+    },
+    "invariant": {
+      "type": "object",
+      "description": "I — what must survive every projection. See §7.2, 'meaning is what survives transformation'.",
+      "required": ["essence", "constraints"],
+      "additionalProperties": false,
+      "properties": {
+        "essence": {
+          "type": "string",
+          "description": "The representation-invariant core meaning/intent."
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Irreducible boundaries (κ) bounding valid states."
+        }
+      }
+    },
+    "representations": {
+      "type": "array",
+      "description": "R — the projections R_i(ℭ). Each is a view, never the whole form (R_i(ℭ) ⊂ ℭ).",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["projection_type", "media_type", "content"],
+        "additionalProperties": false,
+        "properties": {
+          "projection_type": {
+            "type": "string",
+            "enum": ["text", "diagram", "code", "prompt", "agent_spec", "ast", "simulation"]
+          },
+          "media_type": { "type": "string", "description": "e.g. text/markdown, application/json, image/svg+xml." },
+          "content": { "type": "string", "description": "The concrete serialized projection R_i(ℭ)." }
+        }
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "description": "T — the operators of §7.3.",
+      "items": {
+        "type": "object",
+        "required": ["operator", "input_representation", "output_representation"],
+        "additionalProperties": false,
+        "properties": {
+          "operator": {
+            "type": "string",
+            "enum": ["project", "translate", "compress", "expand", "compose", "reflect", "execute", "correct"]
+          },
+          "input_representation": { "type": "string" },
+          "output_representation": { "type": "string" }
+        }
+      }
+    },
+    "feedback_loops": {
+      "type": "array",
+      "description": "F — how the form corrects itself (Power x NoFeedback -> Drift).",
+      "items": {
+        "type": "object",
+        "required": ["evaluator", "metric", "repaired_by"],
+        "additionalProperties": false,
+        "properties": {
+          "evaluator": { "type": "string", "description": "Human or machine agent validating the output." },
+          "metric": { "type": "string", "description": "e.g. semantic_drift, compilation_success." },
+          "repaired_by": { "type": "string", "description": "Transformation operator/id executed on failure." }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "description": "H — the form's evolution over time.",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "sequence_index", "previous_form_hash", "delta"],
+        "additionalProperties": false,
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "sequence_index": { "type": "integer", "minimum": 0 },
+          "previous_form_hash": { "type": "string" },
+          "delta": { "type": "object", "description": "Structural diff (e.g. JSON patch) of changes." }
+        }
+      }
+    }
+  }
+}
