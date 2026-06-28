@@ -57,6 +57,26 @@ canonical public scientific reference.
 
 ---
 
+## 1a. Status, scope, and notation (read this first)
+
+This is a **research program**, not a finished science (see §10). Three scoping
+rules hold throughout, so the rest of the document is read at the right altitude:
+
+1. **Stages differ.** The ontology (§4) and the recursive equation (§5) are the
+   stable core. The two calculi (§6, §7) are **candidate formalizations** — their
+   "axioms," "theorems," and bounds are conjectures and proof-sketches under
+   development, not established results, even where the prose states them plainly.
+   Read §6 and §7 as proposals to be proven or falsified (§9), not as proofs.
+2. **Notation is scoped per theory and not yet unified.** Some symbols are reused
+   across theories with different meanings — most importantly **α** (agency in the
+   ontology, §4.1; attention in the Metacognitive Calculus, §6.3) and **Φ** (a
+   scalar potential in §6.3; the state-transition function in §5.3 / §7.6). Context
+   disambiguates; a single unified notation is open work (§10).
+3. **ℭ has more than one presentation.** §4.4, §5.3, and §7.1 give different
+   component lists for the Cognitive Form. They are intended as views of one object,
+   but the isomorphism between them is unproven and is part of the central open
+   duality (§10.2).
+
 ## 2. How the inquiry evolved
 
 The dialogue moved through ten recognizable stages. Tracking the arc matters
@@ -201,8 +221,9 @@ correct itself by consequence — they are the minimal pattern of cognition.
 
 ## 5. The recursive cognitive equation
 
-The unifying result. Both theories below are special cases of one recursive
-state-transition system. This is the mature, non-linear form.
+The candidate unifying structure. Both theories below are *conjectured* to be
+special cases of one recursive state-transition system; establishing that duality is
+the central open theorem (§10.2). This is the mature, non-linear form.
 
 ### 5.1 The loop
 
@@ -309,7 +330,7 @@ S₁ ⊕ S₂         # information merge (commutative, associative, monotonic)
 A' = A(A)       # recursion — an agent operating on itself
 ```
 
-### 6.5 Axioms and conservation laws
+### 6.5 Candidate axioms and conservation laws (conjectured)
 
 - **Information non-negativity** — `I(S'; S) ≥ 0` for any transform.
 - **Attention conservation** — `Σ αᵢ ≤ 1`; throughput splits, never multiplies.
@@ -374,7 +395,7 @@ A representation is a **projection** `R_i = P_i(ℭ)`, and the projection is nev
 the form: `R_i(ℭ) ⊂ ℭ`. The map is not the territory; the equation is not the
 concept; the prompt is not the agent.
 
-### 7.2 The central law
+### 7.2 The central principle
 
 > **Meaning is what survives transformation.**
 
@@ -383,11 +404,17 @@ I(ℭ) = ⋂_i Meaning( R_i(ℭ) )
 ```
 
 The identity of a form is the intersection of meaning across all its valid
-projections. Four lenses sharpen this:
+projections. Here `Meaning(R)` is read operationally as the consequences a
+representation entails for action under a goal — what it lets you predict and do;
+grounding it precisely so the intersection is computable is open (§10). Four lenses
+sharpen the principle:
 
 - **Einstein** — the *invariant*: what stays true when the representation changes.
 - **Wiener** — the *feedback loop*: how the form corrects itself through action.
-- **Gödel** — the *self-reference boundary*: a form cannot fully contain itself.
+- **Self-reference** — the *map-territory limit*: a model stands outside what it
+  models, so no representation exhausts the form. (This is the older map-territory
+  asymmetry, **not** Gödel's incompleteness theorem, which concerns provability,
+  not containment.)
 - **Shannon** — the *channel*: how much meaning survives transmission through noise.
 
 ### 7.3 Operators
@@ -405,13 +432,13 @@ correct(ℭ, F)         # update by feedback
 
 ### 7.4 Selected axioms and theorems
 
-**Axioms (abbreviated):** every form has at least one representation; no
+**Candidate axioms (abbreviated, conjectured):** every form has at least one representation; no
 representation exhausts the form (`R_i(ℭ) ⊂ ℭ`); a translation is valid iff it
 preserves invariant identity; any form in a changing environment degrades without
 feedback; a self-referential system cannot fully represent itself
-(`Model(ℭ) ⊂ ℭ`, the Gödel boundary).
+(`Model(ℭ) ⊂ ℭ`, the map-territory limit).
 
-**Theorems (proof sketches in the source):**
+**Candidate theorems (proof sketches under development):**
 
 - **Representation invariance** — if two representations preserve the same
   invariant, they express the same form.
@@ -510,9 +537,9 @@ spec, the public essays, the seed repository — is itself one Cognitive Form,
 L0–L7 map, the runtime spec, the voiced essay, the method seed. By the central law
 (§7.2) the identity of complexence is the *intersection* of meaning across all of
 them, and no single one exhausts it (`R_i(ℭ) ⊂ ℭ`). The word stays deliberately
-loose because `Model(ℭ) ⊂ ℭ` — a self-referential form cannot fully contain itself
-(the Gödel boundary, §7.4). The looseness is not vagueness; it is the formal residue
-the boundary guarantees.
+loose because `Model(ℭ) ⊂ ℭ` — a model stands outside what it models, so no
+representation exhausts the form (the map-territory limit, §7.4). The looseness is
+not vagueness; it is the residue that limit guarantees.
 
 Maintaining the corpus is therefore itself a complexence operation, run by the loop
 of §5:
@@ -616,6 +643,14 @@ Honest record of what is unresolved. These are the live research edges.
    `meaning velocity`, throughput, and trust can be estimated and shown to
    predict performance in humans, AIs, and hybrid teams. Until then it is a
    well-structured research program, not a result.
+6. **The formalism's own logic is unverified — these are logical debts, distinct
+   from the empirical bet above, and tracked openly.** Minimality and generativity
+   (§4.3) are *claimed*, not demonstrated: no removal-test shows the primitive set
+   is irreducible, and no worked composition derives goal, language, or agent from
+   the primitives. The three presentations of ℭ (§4.4, §5.3, §7.1) need a unifying
+   isomorphism. `Meaning()` (§7.2) needs an operational grounding to escape
+   circularity. Goal `G` is used in §5.2 but is not yet built from the primitives.
+   The notation overlaps (α, Φ) need a unified convention.
 
 ---
 

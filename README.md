@@ -36,10 +36,11 @@ a thought in  ->  one router  ->  specialist roles  ->  durable artifacts  ->  w
 > Open a chat, paste one prompt, point it at a few typed lines. That's the whole
 > first rung.
 
-> ⚠️ **This repo is public, and git history is permanent.** It contains the method
-> only — spec, role prompts, and *blank* templates. Your real captures and outputs
-> are private data and must never be committed here. **Read [GUARDRAILS.md](./GUARDRAILS.md)
-> before you commit anything.**
+> ⚠️ **This repo is public, and git history is permanent.** It holds the *public
+> stack* — the specs (capability, method, and the science), the role prompts, and
+> *blank* templates. All of that is meant to be public. What must **never** be
+> committed here is **your** private data: your real captures, outputs, and filled-in
+> instance. **Read [GUARDRAILS.md](./GUARDRAILS.md) before you commit anything.**
 
 ---
 
