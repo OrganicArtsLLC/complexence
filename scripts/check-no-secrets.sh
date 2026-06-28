@@ -26,7 +26,8 @@ patterns='email|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}
 phone|(\+?[0-9]{1,2}[ .-]?)?\(?[0-9]{3}\)?[ .-][0-9]{3}[ .-][0-9]{4}
 aws-key|AKIA[0-9A-Z]{16}
 private-key|-----BEGIN [A-Z ]*PRIVATE KEY-----
-secret-assign|(authorization|bearer|api[_-]?key|secret|token)["'"'"' :=]+[A-Za-z0-9._-]{16,}'
+secret-assign|(authorization|bearer|api[_-]?key|secret|token)["'"'"' :=]+[A-Za-z0-9._-]{16,}
+private-marker|(CONFIDENTIAL|DO[ _-]?NOT[ _-]?COMMIT|PRIVATE[ _-]ONLY|@private)'
 
 findings="$(mktemp)"
 trap 'rm -f "$findings"' EXIT

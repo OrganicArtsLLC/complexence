@@ -29,6 +29,25 @@ one short daily brief.
 Sum five factors, each 0-20: intent clarity; context sufficiency; artifact
 determinism; risk sensitivity; reversibility.
 
+**Behavioral anchors** — grade against these, not by feel:
+
+- **90-100** — intent is unambiguous, all needed context is present, the output
+  format is fully determined, and the action is low-risk and cheaply reversible.
+  You could act and a reviewer would agree without question.
+- **70-89** — intent is clear but some attributes are missing or assumed, or the
+  format needs a judgment call, or the action is mildly risky or hard to undo.
+  Safe to do, worth a glance.
+- **Below 70** — the item needs a clarifying answer before you can act safely:
+  ambiguous intent, context you cannot fill, real legal/money/relationship risk,
+  or an irreversible step.
+
+Record each grade **with its rationale** in a fenced block, so the score is
+auditable rather than asserted:
+
+```json
+{"item": "<id>", "score": 0, "factors": {"intent": 0, "context": 0, "determinism": 0, "risk": 0, "reversibility": 0}, "route": "auto|review|blocked", "why": "<one line>"}
+```
+
 ## Routing policy
 
 - `>= 90` — auto-process and log in the completion summary.
