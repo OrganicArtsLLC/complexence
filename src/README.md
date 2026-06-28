@@ -42,5 +42,22 @@ python cognitive_form.py reflect  example.cform.json   # ℭ describing itself
 ```
 
 `example.cform.json` is a worked instance (complexence as a Cognitive Form, fittingly
-recursive). Next on the ROADMAP: real `invariant_preserved` checks, then the
-measurement harness that tests meaning velocity.
+recursive).
+
+## Demo — operators with a real model (`demo.py`)
+
+`demo.py` runs the loop end-to-end against a live model (the local `claude` CLI as
+one swappable adapter): it **projects** the invariant into a metaphor, **translates**
+that into pseudocode, then runs a **round-trip invariant check** — reconstruct the
+core idea from a representation alone and ask the model whether the meaning survived.
+That is a first *real* `invariant_preserved` (a model's judgment, not a proof, but
+runnable), the Phase-2 measurement-harness seed. It also times each transform as a
+meaning-velocity proxy (§9.3).
+
+```bash
+python demo.py            # needs a model adapter on PATH (claude CLI by default)
+```
+
+A sample run: `project -> metaphor`, `translate -> pseudocode`, `invariant round-trip
+= preserved (YES)`, 3 transforms in ~30s. The central claim — *meaning is what
+survives transformation* — executed and checked, not just asserted.
