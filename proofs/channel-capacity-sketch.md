@@ -4,7 +4,8 @@
 theorem under three explicit assumptions*. It does **not** establish the bound for
 cognition, because the assumptions are themselves unjustified — it **relocates the
 debt** from the inequality to its premises. Honest framing per `complexence-science.md`
-§10. First sketch contributed by Google Gemini against the published spec, vetted here.
+§10. First sketch drafted by Google Gemini (the author ran the model against the
+published spec — solicited, model-assisted), then vetted here.
 
 ## Claim
 

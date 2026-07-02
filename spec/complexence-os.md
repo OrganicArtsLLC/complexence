@@ -164,7 +164,7 @@ else proceeds without interruption.
 
 | Phase | Goal | Exit Condition |
 |---|---|---|
-| 0 — Prompt-only MVP | Prove flow with no build | 7 consecutive days of inbox processing + 1 daily brief/day |
+| 0 — Prompt-only MVP (minimum viable product) | Prove flow with no build | 7 consecutive days of inbox processing + 1 daily brief/day |
 | 1 — Light automation | Reduce friction | voice→inbox < 2 min; weekly digest < 5 min; daily session < 20 min |
 | 2 — Orchestration | One-entry triage | one prompt runs full daily triage; escalations carry options |
 | 3 — Stability | Boring reliability | < 5% artifacts need major rewrite; no duplicate daily files |
@@ -212,7 +212,7 @@ To stand up a new instance:
 - Experience: reduced evening triage time; more voice ideas converted to durable
   outputs.
 
-Concrete proxies, so "reduced desk friction" is validated with numbers, not feel:
+Concrete proxies, so "reduced desk friction" can be checked with numbers, not feel:
 **% of days with the inbox processed and the brief reviewed**; **draft rewrite rate**
 (fraction of artifacts accepted without heavy edit); and **time-to-usable-artifact**
 (capture → an artifact you act on). These are the operating-method-level analog of

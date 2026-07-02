@@ -17,7 +17,7 @@ v0.1 experiment: small N, model-judged, toy task. Not a published result — a r
 falsifiable first cut of the §9.4 multi-agent design.
 
 Usage: python experiment.py [--hops 4] [--trials 2]
-Needs a model adapter on PATH (the `claude` CLI by default).
+Needs a model adapter on PATH (the `claude` CLI by default). Licensed MIT.
 """
 from __future__ import annotations
 

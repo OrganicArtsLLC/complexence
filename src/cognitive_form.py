@@ -23,9 +23,12 @@ CLI:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
+import uuid
 from copy import deepcopy
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
@@ -101,15 +104,34 @@ def reflect(form: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
+def _form_hash(form: dict[str, Any]) -> str:
+    """Stable content hash of a form (for history/provenance records)."""
+    return hashlib.sha256(
+        json.dumps(form, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:16]
+
+
 def compose(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
-    """Join two forms into a higher form: merge invariants/constraints, union reprs."""
+    """Join two forms into a higher form. ℭ = (I, R, T, F, H), so *all five* components
+    must survive the join: merge invariants/constraints, union representations, union
+    feedback loops, record the composition in history (with both parents' hashes), and
+    derive a fresh id — the composed form is a new form, not `a` wearing extra parts.
+    Note: the essence merge is ordered, so compose(a, b) != compose(b, a) by design of
+    the string join; a symmetric merge is open work."""
     out = deepcopy(a)
     out["invariant"]["essence"] = f"{a['invariant']['essence']} ⊕ {b['invariant']['essence']}"
     out["invariant"]["constraints"] = list(dict.fromkeys(
         a["invariant"].get("constraints", []) + b["invariant"].get("constraints", [])))
-    out["representations"] = a.get("representations", []) + b.get("representations", [])
+    out["representations"] = deepcopy(a.get("representations", []) + b.get("representations", []))
+    out["feedback_loops"] = deepcopy(a.get("feedback_loops", []) + b.get("feedback_loops", []))
     out.setdefault("transformations", []).append(
         {"operator": "compose", "input_representation": "a+b", "output_representation": "composed"})
+    out["id"] = str(uuid.uuid5(uuid.NAMESPACE_URL, out["invariant"]["essence"]))
+    out.setdefault("history", []).append({
+        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "sequence_index": len(out.get("history", [])),
+        "previous_form_hash": f"{_form_hash(a)}+{_form_hash(b)}",
+        "delta": {"note": "compose: merged invariants, unioned representations/feedback, fresh id"},
+    })
     return out
 
 
@@ -166,7 +188,6 @@ def correct(form, feedback: dict[str, Any], transform) -> dict[str, Any]:
 
 def main() -> int:
     if len(sys.argv) < 3 or sys.argv[1] not in {"validate", "reflect"}:
-        print(__doc__.strip().splitlines()[-3] if __doc__ else "usage: cognitive_form.py validate|reflect <file>")
         print("usage: cognitive_form.py validate|reflect <file.cform.json>")
         return 2
     cmd, path = sys.argv[1], Path(sys.argv[2])

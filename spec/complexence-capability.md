@@ -21,8 +21,9 @@ Perception -> Mapping -> Orientation -> Decision -> Action -> Feedback -> Learni
 Formal basis: this loop is the human-language form of the recursive cognitive
 equation `Σ -> ω -> μ -> π -> η -> α -> τ(Σ) -> Σ'` defined in
 [The Science of Complexence](./complexence-science.md) (section 5). The
-capability is that loop run well under load; the equation defines what "well"
-means precisely.
+capability is that loop run well under load; the equation states the loop
+formally, and what "well" means is the open measurement question of the
+science's Theory A (its §6 and §10.5).
 
 ## 2. Stack Placement
 
@@ -127,14 +128,10 @@ All three surfaces must preserve the same level model and loop semantics.
 - Scientific basis: [The Science of Complexence](./complexence-science.md)
   (the formal theory under this capability — the two calculi, the foundational
   ontology, and the recursive cognitive equation).
-- Strategy and naming context: blog ADR-023.
+- Strategy and naming context: kept in a private strategy record.
 
 ## 10. Source Inputs
 
-- `sources/better-map-framework-research.md`
-- `sources/naming-and-domain-strategy-research.md`
-- `sources/origin-rabbit-hole-domainideas.md`
-- `sources/A Better Map of Modern Complexity.pdf`
-- `sources/The Better Map of Modern Complexity.pdf`
+Distilled from private research notes and drafts (not published).
 
-**Last Updated:** 2026-06-28
+**Last Updated:** 2026-07-01

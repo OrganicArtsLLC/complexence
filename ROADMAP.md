@@ -8,7 +8,9 @@ without feedback drifts ([`spec/complexence-science.md`](./spec/complexence-scie
 
 **Status:** v0.1 — formal spec stable enough to build on and argue with; the
 reference implementation runs (Phase 1) and the measurement harness has its first
-falsifiable experiment (Phase 2 seed), whose first result is an honest null (below).
+falsifiable experiments (Phase 2 seed). First result: an honest null. Second run
+(v0.2): invalid, with raw numbers leaning against the prediction, written up
+below, not buried.
 
 ---
 
@@ -18,13 +20,17 @@ falsifiable experiment (Phase 2 seed), whose first result is an honest null (bel
 > **Cognitive Forms** rather than on independent documents, prompts, diagrams, and
 > code. (`complexence-science.md` §9.1)
 
+(A Cognitive Form is the meaning kept separate from any one way of writing it down —
+the same idea whether it's an essay, a diagram, or code. "Representation-invariant"
+is that property. Defined in the spec, §7.)
+
 This is the claim everything else is in service of, and the thing that has to be
 *measured*, not just asserted, before "science" loses its caveat.
 
 ## Open edges (the live research questions)
 
-From `complexence-science.md` §10 — these are tracked, not hidden, because a field
-that hides its open edges is just a brand:
+From `complexence-science.md` §10 — these are tracked, not hidden, because the open
+edges *are* the field:
 
 1. **Which primitive is deepest** — potential, distinction, or constraint? Fixes the bottom of the ontology.
 2. **Are the two calculi dual?** The Metacognitive Calculus (process) and the Calculus of Cognitive Forms (object) both compress to `ℭ_{t+1} = Φ(ℭ_t, …)`. A formal duality is the most-wanted theorem.
@@ -44,41 +50,76 @@ that hides its open edges is just a brand:
 
 Phase 1 onward is the "devops the science" work: the spec gets a reference
 implementation, the implementation gets tests, the tests operationalize the claims,
-and the loop closes — `correct(ℭ, F)` producing the next version.
+and the loop closes: `correct(ℭ, F)` producing the next version.
 
 ## Landed so far (the loop in motion)
 
-The feedback the §8.5 argument predicts is already running — the published spec drew
-external review and contributions within hours of going public:
+The feedback the §8.5 argument predicts started running within hours of going
+public. Honest framing: the first outside passes came from me putting the spec in
+front of other frontier models and vetting what came back — solicited, model-assisted
+feedback, not community traction. Genuine external review (minds not under my
+direction) is still pending, and saying so is the point:
 
 - **`src/cognitive-form.schema.json`** — the Cognitive Form interchange format (Phase 1).
   First draft contributed by Google Gemini against the public spec, then vetted here
-  (operator enum aligned to §7.3 — added `correct`; `$schema` URI fixed). MIT.
+  (operator enum aligned to §7.3: added `correct`; `$schema` URI fixed). MIT.
 - **`proofs/channel-capacity-sketch.md`** — the §6.6 bound *derived under three explicit
   (still-unjustified) assumptions*. Contributed + vetted. It relocates the debt to its
-  premises rather than erasing it — honest progress, not a closed result.
+  premises rather than erasing it; honest progress, not a closed result.
 - **`src/demo.py`** — the operators run end-to-end against a live model: project →
   translate → a real (if crude) round-trip `invariant_preserved` check. The Phase-2
   measurement-harness seed.
 - **`src/experiment.py`** — a first, falsifiable cut at the central bet (§9.4): N-hop
   relay under condition A (shared invariant re-pinned each hop) vs. B (telephone, text
   only), scored for semantic drift.
+- **`src/experiment_v2.py`** — the v0.2 lossy-channel sweep: the same relay, but the
+  text passed between hops goes through word-dropout at rate p, isolating the one
+  variable the v0.1 null pointed at. Its docstring carries a pre-registered
+  prediction, written before the run (the run artifacts are gitignored, so the
+  ordering is stated, not provable from git history).
 
 ### First experiment result — honest negative / inconclusive
 
 The first run *looked* like evidence for the bet (A beat B). It was an artifact: the
 v0.1 drift scorer silently defaulted unparseable judgments to `0`, and a single
 model-judge swung wildly (per-trial scores of 0 and 8 for the *same* condition).
-Hardening the scorer — median of three judges, parse-failure ≠ 0 — collapsed the
+Hardening the scorer (median of three judges, parse-failure ≠ 0) collapsed the
 variance to `A=[5,7,7]` vs `B=[6,7,7]`: **mean 6.3 vs 6.7, delta −0.3, inside noise.**
 
 So the first measured finding is **no signal at this scale**, and the real lesson is
 the one §10.5 names in advance: *measurability is the whole bet.* The bottleneck is the
-measurement, not (yet) the claim — a toy task at 3 hops preserves intent under both
+measurement, not (yet) the claim: a toy task at 3 hops preserves intent under both
 conditions, so there is nothing for a shared form to save. The bet predicts the gap
 opens as hops, agent count, and task difficulty grow; testing that is Phase 3 with a
 calibrated rubric judge (or embeddings), more trials, and a harder task. Recorded here
 rather than buried, because a program that hides its null results is just a brand.
+
+### Second experiment result (v0.2) — invalid run, raw direction against the prediction
+
+The v0.2 docstring pre-registered a signature for the bet: A and B tie on rubric at
+p=0.0, and A beats B by ≥ +0.20 at p=0.6, the delta growing with noise. The run
+happened on 2026-06-28. It did not deliver a valid test, and what it did produce
+leaned the other way. Both facts belong here, in order of importance:
+
+1. **The run is invalid.** At p=0.6 the model adapter returned API-refusal text
+   ("Claude Code is unable to respond to this request…") instead of elaborations.
+   The refusals entered the relay as if they were work products, then went to the
+   judges as if they were finals; one pure refusal was scored **rubric 1.0**, a
+   graded artifact expressing nothing. The v0.1 lesson repeated one layer down: I
+   hardened the scorer, and then the *harness* fed it garbage it trusted. §10.5 in
+   practice, again: measurement validity is the whole bet.
+2. **For the record, the raw deltas ran against the pre-registered signature:**
+   rubric delta A−B was **−0.12 at p=0.0 and −0.38 at p=0.6** — the anchored
+   condition did *worse* as the channel degraded, the inverse of the prediction.
+   Because of (1), this is not clean evidence against the bet; it is an invalid run
+   whose direction happened to be adverse. It is reported anyway, because a public
+   pre-registration with a silent outcome is worse than no pre-registration at all.
+
+What changes before the re-run: the harness now rejects refusal/error outputs (a
+nonzero adapter exit raises; a refusal signature invalidates the trial instead of
+scoring it), and every cell reports its validity rate. Then v0.2 runs again, clean.
+Until that lands, the pre-registration stands as an open debt, and this section is
+the receipt.
 
 That is the whole point of versioning the science in public: critique, contribution,
 and *honest negative results* all become commits.
@@ -91,4 +132,4 @@ implementation. Prose is **CC BY 4.0**; code is **MIT**. Credit where it came fr
 
 ---
 
-**Last Updated:** 2026-06-28.
+**Last Updated:** 2026-07-01.

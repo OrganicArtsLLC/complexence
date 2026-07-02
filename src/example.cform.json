@@ -26,7 +26,7 @@
   ],
   "feedback_loops": [
     {
-      "evaluator": "external review (Gemini, Google, Grok)",
+      "evaluator": "model-assisted review (Gemini, Grok), author-vetted",
       "metric": "semantic_drift",
       "repaired_by": "correct"
     }

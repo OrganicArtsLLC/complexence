@@ -21,20 +21,31 @@ single model-judge scalar was the v0.1 bottleneck):
   2. reconstruction — can a fresh agent rebuild the original essence from the final? (0/1),
   3. holistic       — median of three 0-10 fidelity judgments, normalized to 0-1.
 
-PRE-REGISTERED PREDICTION (committed before the run — see git history):
+PRE-REGISTERED PREDICTION (written in this docstring before the run; the run
+artifacts are gitignored, so the ordering is not verifiable from git history —
+stated for what it is):
   · p = 0.0 : A and B TIE on rubric (|delta| < 0.15) — clean channel, nothing to save.
   · p = 0.6 : A beats B on rubric by >= +0.20 — the anchor pays off as the channel
               degrades. The bet's signature is delta GROWING with p.
   If delta stays flat near 0 across p, that is honest evidence AGAINST the bet (or that
   it does not hold for capable models on this task). Either way it is a real result.
 
+FIRST-RUN NOTE (2026-06-28, full write-up in ../ROADMAP.md): the first v0.2 run was
+INVALID — the adapter returned API-refusal text that entered the relay and the judges,
+and one pure refusal was scored rubric 1.0. Its raw deltas ran against the prediction
+(A−B rubric −0.12 at p=0.0, −0.38 at p=0.6), but the contamination means it is an
+invalid run, not clean evidence either way. The harness below now rejects refusal/error
+outputs and reports a validity rate; a clean re-run is the open next step.
+
 Usage: python experiment_v2.py [--hops 5] [--trials 2] [--noise 0.0,0.6] [--three-arm]
 Needs a model adapter on PATH (the `claude` CLI by default, via demo.claude).
+Licensed MIT.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import random
 import re
 import statistics
@@ -46,6 +57,28 @@ from demo import claude  # the swappable model adapter
 
 HERE = Path(__file__).parent
 WORKERS = 6
+
+
+# ── Output validity (refusals must be excluded, not scored) ──────────────────
+# The first v0.2 run was invalidated by exactly this gap: API-refusal text became
+# relay hops and judge inputs, and one pure refusal was scored rubric 1.0. For a
+# measurement harness, output-validity checking IS the measurement.
+
+REFUSAL_SIGNATURES = (
+    "api error", "usage policy", "unable to respond to this request",
+    "usage-safety filter", "automatically flagged", "cannot honor a request",
+    "i can't help with", "i cannot help with",
+)
+
+
+class InvalidTrial(RuntimeError):
+    """A hop returned refusal/error text instead of work; the trial cannot be scored."""
+
+
+def invalid_output(text: str) -> bool:
+    """True if the adapter returned a refusal/error (or nothing) instead of an elaboration."""
+    t = text.lower()
+    return (not text.strip()) or any(sig in t for sig in REFUSAL_SIGNATURES)
 
 
 # ── The lossy channel (the "weak agent / noisy link" knob) ───────────────────
@@ -83,6 +116,8 @@ def relay(condition: str, invariant: str, hops: int, p: float, rng: random.Rando
                 "or structure, keep it to a short paragraph. Output only the elaboration.\n\n"
                 + seen)
         work = claude(prompt)
+        if invalid_output(work):
+            raise InvalidTrial(f"hop {i}: adapter returned refusal/error text, not work")
     return work
 
 
@@ -130,11 +165,17 @@ def metric_holistic(essence: str, final: str) -> float:
 # ── One full trial cell (runs sequentially; cells run concurrently) ──────────
 
 def run_cell(condition: str, p: float, trial: int, inv: dict, hops: int) -> dict:
+    # Seed note: A and the B' control share a noise realization; B draws its own.
+    # Partially-paired noise, kept as-is and stated; full pairing would seed on (p, trial).
     rng = random.Random(int(p * 1000) + trial * 7 + (1 if condition == "B" else 0))
     essence = inv["essence"]
-    final = relay(condition, essence, hops, p, rng)
+    try:
+        final = relay(condition, essence, hops, p, rng)
+    except (InvalidTrial, RuntimeError) as e:
+        return {"condition": condition, "p": p, "trial": trial,
+                "valid": False, "invalid_reason": str(e)}
     return {
-        "condition": condition, "p": p, "trial": trial,
+        "condition": condition, "p": p, "trial": trial, "valid": True,
         "rubric": metric_rubric(essence, inv.get("constraints", []), final),
         "recon": metric_reconstruction(essence, final),
         "holistic": metric_holistic(essence, final),
@@ -143,13 +184,21 @@ def run_cell(condition: str, p: float, trial: int, inv: dict, hops: int) -> dict
 
 
 def summarize(rows: list[dict], conds: list[str], noises: list[float]) -> dict:
+    """Means over VALID trials only; NaN metrics treated as missing. Each cell also
+    reports its validity rate — an invalid trial is excluded and counted, never scored."""
     out = {}
     for p in noises:
         out[p] = {}
         for c in conds:
             cell = [r for r in rows if r["p"] == p and r["condition"] == c]
-            out[p][c] = {m: round(statistics.mean([r[m] for r in cell]), 3)
-                         for m in ("rubric", "recon", "holistic")} if cell else {}
+            valid = [r for r in cell if r.get("valid", True)]
+            entry: dict = {"n_total": len(cell), "n_valid": len(valid)}
+            for m in ("rubric", "recon", "holistic"):
+                vals = [r[m] for r in valid
+                        if isinstance(r.get(m), (int, float)) and not math.isnan(r[m])]
+                if vals:
+                    entry[m] = round(statistics.mean(vals), 3)
+            out[p][c] = entry
     return out
 
 
@@ -180,23 +229,28 @@ def main() -> int:
     (HERE / args.out).write_text(json.dumps({"summary": summ, "rows": rows, "seconds": dt,
                                              "hops": args.hops, "trials": args.trials}, indent=2))
 
+    n_valid = sum(1 for r in rows if r.get("valid", True))
     print("=" * 64)
-    print(f"  {'noise':>6}  {'cond':>6}  {'rubric':>7}  {'recon':>6}  {'holistic':>8}")
+    print(f"  {'noise':>6}  {'cond':>6}  {'rubric':>7}  {'recon':>6}  {'holistic':>8}  {'valid':>7}")
     for p in noises:
         for c in conds:
             s = summ[p][c]
-            print(f"  {p:>6}  {c:>6}  {s.get('rubric', 0):>7.2f}  {s.get('recon', 0):>6.2f}  {s.get('holistic', 0):>8.2f}")
-        if "A" in summ[p] and "B" in summ[p] and summ[p]["A"] and summ[p]["B"]:
+            print(f"  {p:>6}  {c:>6}  {s.get('rubric', float('nan')):>7.2f}  "
+                  f"{s.get('recon', float('nan')):>6.2f}  {s.get('holistic', float('nan')):>8.2f}  "
+                  f"{s['n_valid']}/{s['n_total']:>2}")
+        if "rubric" in summ[p].get("A", {}) and "rubric" in summ[p].get("B", {}):
             d = summ[p]["A"]["rubric"] - summ[p]["B"]["rubric"]
             print(f"  {p:>6}  {'A-B':>6}  {d:>+7.2f}  (rubric delta)")
         print("  " + "-" * 60)
-    print(f"  {len(cells)} cells, {dt:.0f}s → {args.out}")
+    print(f"  {len(cells)} cells ({n_valid} valid), {dt:.0f}s → {args.out}")
+    if n_valid < len(cells):
+        print(f"  ⚠ {len(cells) - n_valid} trial(s) INVALID (refusal/error output) — excluded, counted.")
 
-    # Pre-registered verdict (committed in the docstring before the run)
+    # Verdict against the docstring prediction (written before the run)
     print("=" * 64)
     if len(noises) >= 2:
         lo, hi = min(noises), max(noises)
-        if summ[lo].get("A") and summ[hi].get("A"):
+        if all("rubric" in summ[q].get(c, {}) for q in (lo, hi) for c in ("A", "B")):
             d_lo = summ[lo]["A"]["rubric"] - summ[lo]["B"]["rubric"]
             d_hi = summ[hi]["A"]["rubric"] - summ[hi]["B"]["rubric"]
             print(f"  delta(rubric) at p={lo}: {d_lo:+.2f}   at p={hi}: {d_hi:+.2f}")
@@ -208,6 +262,9 @@ def main() -> int:
                 print("    Honest evidence the bet does not hold for capable models here.")
             else:
                 print("  → mixed / underpowered. Needs more trials or a harder task.")
+        else:
+            print("  → NO VERDICT: too many invalid trials to compare the pre-registered")
+            print("    cells. Fix the harness/adapter and re-run before reading anything in.")
     print("=" * 64)
     return 0
 

@@ -48,7 +48,9 @@ Three things came out of the dialogue that are worth keeping:
    formal study of cognitive structure, named **complexence**.
 2. **Two complementary theories** — a *measurable* science of cognitive
    amplification (the **Metacognitive Calculus**) and a *structural* algebra of
-   meaning (the **Calculus of Cognitive Forms**).
+   meaning (the **Calculus of Cognitive Forms**). (A Cognitive Form is meaning
+   kept separate from any one way of writing it down — the same idea whether it
+   appears as an essay, a diagram, or code. Defined in §7.)
 3. **One foundational ontology** — a minimal generative stack of primitives
    (potential through agency) from which both theories can be built.
 
@@ -91,9 +93,9 @@ the residue of those corrections.
 | 4 | "Deep research" pass | Foundations (Shannon, Kolmogorov, Turing, ACT-R/Soar, Minsky), theorems, experiments |
 | 5 | Reframe the north star | Human-machine *meaning transfer*; the metric is **meaning velocity** (Δmeaning/Δtime) |
 | 6 | Introduce representation invariance | Pivot from equations to **Cognitive Forms** — meaning independent of representation |
-| 7 | Distill the law | "Meaning is what survives transformation"; the four lenses (Einstein/Wiener/Gödel/Shannon) |
+| 7 | Distill the law | "Meaning is what survives transformation"; the four lenses (Einstein/Wiener/Self-reference/Shannon) |
 | 8 | Full formalization | **The Calculus of Cognitive Forms** — principles, axioms, theorems, laws |
-| 9 | Make it practical | The **Cognitive Compiler**; cognitive forms as the "AST of thought"; **Complexence OS** |
+| 9 | Make it practical | The **Cognitive Compiler**; cognitive forms as the "AST of thought" (AST = abstract syntax tree — the structure a compiler keeps after it throws away your exact wording); **Complexence OS** |
 | 10 | Go beneath cognition | The **foundational ontology**: potential → ... → agency, as a *recursive graph*, not a line |
 
 The two most important corrections, made late, are load-bearing:
@@ -120,6 +122,9 @@ truth         → logic
 computation   → computer science
 cognitive structure → COMPLEXENCE
 ```
+
+That's the claim, and it's one person's bet, not a consensus — §3a says what the
+neighbors already cover, and §10 says what this still owes.
 
 Complexence (the field) studies the **forms, transformations, and navigation of
 complexity independent of any particular domain**. Its primitives are not numbers
@@ -164,7 +169,8 @@ such test — but the lines are stateable now.
   clean relation: Active Inference is a candidate theory of the *dynamics inside one
   node* of the §5 loop; Complexence studies the forms moved around it. They compose;
   they do not compete.
-- **OODA (Boyd).** *Shared:* the loop, and the centrality of Orientation (the L0–L7
+- **OODA (Boyd's observe–orient–decide–act loop, from air combat).** *Shared:* the
+  loop, and the centrality of Orientation (the L0–L7
   map is orientation-heavy by design). *Distinct:* OODA is an informal strategic
   heuristic — no ontology, no recursive equation, no representation-invariance, no
   measurable quantities. The §5 loop is OODA's structure made formal; Theory B adds
@@ -321,8 +327,9 @@ loop in human terms; this is the same loop in formal terms.
 | Action | L7 Execution | `α → τ(Σ)` Agency transforms structure |
 | Feedback / Learning | L7 Learning | `F`, `μ` Feedback, Memory update |
 
-The capability is the loop run well, under load, by a person. The equation is
-what "run well" means precisely.
+The capability is the loop run well, under load, by a person. The equation states
+the loop formally; what running it *well* means is the open measurement question
+of Theory A (§6, §10.5).
 
 ---
 
@@ -416,7 +423,7 @@ results.
 | Turing / Church–Turing | Cognitive transforms are computable functions |
 | Soar / ACT-R | Declarative vs procedural split (`K` vs `G`/skills) |
 | Minsky (*Society of Mind*) | Cognition as interacting sub-agents/modules |
-| LLM scaling laws | Power-law performance vs resources; motivates a cognitive scaling law |
+| LLM (large language model) scaling laws | Power-law performance vs resources; motivates a cognitive scaling law |
 
 The cognitive scaling-law conjecture:
 `𝒞 = f(I, A, M, X, R, F)` — capability scales not only with information `I` but
@@ -445,6 +452,16 @@ formalizes the *object* — meaning that survives changing representation.
 A representation is a **projection** `R_i = P_i(ℭ)`, and the projection is never
 the form: `R_i(ℭ) ⊂ ℭ`. The map is not the territory; the equation is not the
 concept; the prompt is not the agent.
+
+**Notation note (read with §1a).** ℭ is a tuple, not a set, so as written `⊂` has
+no defined sense here and the `⋂` in §7.2 has no constructed carrier — these
+formulas are **candidate notation**: a picture of the intended claim, not yet set
+theory. The intended reading, stated so the debt is payable: let `Sem` be a set of
+*consequences for action under a goal*; let `Meaning : representations → 𝒫(Sem)`;
+read `R_i ⊂ ℭ` as "`R_i` is a projection of ℭ that never exhausts it"
+(`P_i(ℭ) = R_i` for some projection map `P_i`); then `I(ℭ) := ⋂_i Meaning(R_i)` is
+a definition in `𝒫(Sem)`. `Sem` itself is not yet constructed — that is tracked in
+§10.6, and until it is, the formulas carry the argument informally.
 
 ### 7.2 The central principle
 
@@ -499,8 +516,13 @@ feedback; a self-referential system cannot fully represent itself
 - **Cognitive amplification** — externalizing/re-internalizing forms with
   preserved identity raises transformation capacity:
   `Amplification = (useful transformation output) / (internal effort)`.
-- **Multiprojection clarity** — a form gets clearer as the number of *consistent*
-  independent projections increases.
+- **Multiprojection clarity** — adding consistent projections sharpens the
+  *boundary* of I(ℭ) — confidence that the surviving core is the true invariant —
+  not its *content*, which weakly shrinks (an intersection can only hold or lose
+  elements as projections are added). The theorem is about confidence, and holds
+  only under projection *independence*; correlated projections (same author, same
+  model family) can raise confidence spuriously. (Tracked as an open tension in
+  §10.6.)
 - **Executable meaning** — executable forms (prompt, workflow, agent, simulation)
   carry greater transformative density than descriptive ones.
 
@@ -519,11 +541,14 @@ feedback; a self-referential system cannot fully represent itself
 ### 7.6 The compact form
 
 ```text
-ℭ_{t+1} = Φ( ℭ_t, R, T, F, H )
+ℭ_{t+1} = Φ_B( ℭ_t, R, T, F, H )
 ```
 
-Identical in shape to the kernel in §5.3 — which is the evidence that Theory A and
-Theory B are two faces of one system (see §10).
+The same recursive pattern as the §5.3 kernel — next state as a function of current
+state — though the two Φ's take different arguments (call them Φ_A and Φ_B; the
+shared symbol is aspirational, per §1a). The resemblance is what *motivates* the
+duality conjecture (§10.2); it is not evidence of it. Every discrete dynamical
+system has this shape.
 
 ---
 
@@ -552,8 +577,8 @@ meaning velocity = Δmeaning / Δtime
 ```
 
 A good cognitive system increases the rate at which useful meaning becomes
-visible, transformable, and actionable. "The mathematics of working with minds
-that think back."
+visible and actionable. The short version I keep coming back to: the mathematics
+of working with minds that think back.
 
 ### 8.3 Cognitive forms as the canonical object
 
@@ -570,27 +595,31 @@ software validates it, tools render it.
 
 ### 8.4 Relation to Complexence OS
 
-[Complexence OS](./complexence-os.md) is the runtime where the Cognitive Form is
-the kernel object. Its `CognitiveForm` type, projection layer, agent runtime,
-memory layer, and feedback layer are the engineering instantiation of Theory B,
-driven by the recursive loop of §5. The capability (orient under load), the field
+[Complexence OS](./complexence-os.md) is the operating method where the Cognitive
+Form is intended as the kernel object. Today the OS spec is markdown and prompt
+contracts (roles, rubrics, cadence), not a runtime; the current partial
+instantiation of Theory B is the reference implementation in `../src/` (the
+`CognitiveForm` schema and operators), with the full projection/agent/memory/
+feedback runtime still aspiration, driven by the recursive loop of §5. The capability (orient under load), the field
 (this document), and the OS (the machine) are one stack at three altitudes.
 
 ### 8.5 The recursive case — complexence applied to itself
 
 The framework must pass its own generativity test (§4.3): a foundational language
 for cognitive structure should be able to describe its own development. It can, and
-the description is exact rather than poetic.
+the description uses the calculus's own operators rather than metaphor — at
+whatever precision those operators currently have (§10.6).
 
 The complexence corpus — this document, the capability spec, the operating-system
 spec, the public essays, the seed repository — is itself one Cognitive Form,
 `ℭ_complexence`. Each document is a projection `R_i(ℭ)`: the formal foundation, the
 L0–L7 map, the runtime spec, the voiced essay, the method seed. By the central law
 (§7.2) the identity of complexence is the *intersection* of meaning across all of
-them, and no single one exhausts it (`R_i(ℭ) ⊂ ℭ`). The word stays deliberately
-loose because `Model(ℭ) ⊂ ℭ` — a model stands outside what it models, so no
-representation exhausts the form (the map-territory limit, §7.4). The looseness is
-not vagueness; it is the residue that limit guarantees.
+them, and no single one exhausts it (`R_i(ℭ) ⊂ ℭ`). The word "complexence" is not
+yet sharp, and the theory predicts no representation of it will ever be final
+(`Model(ℭ) ⊂ ℭ`, the map-territory limit, §7.4). Those are two different facts:
+whether the *current* looseness is that guaranteed residue or plain
+under-definition is decided by doing the §10 work, not by the axiom.
 
 Maintaining the corpus is therefore itself a complexence operation, run by the loop
 of §5:
@@ -610,13 +639,15 @@ Two consequences follow.
 1. **`reflect(ℭ)` is literal here.** Refining the definition of complexence is
    complexence executing on itself — the operator the calculus already names, not a
    metaphor laid over editing.
-2. **The loop prescribes its own publication.** `Power × NoFeedback → Drift`, and
+2. **The loop recommends its own publication.** `Power × NoFeedback → Drift`, and
    *reflection without feedback hallucinates* (Law 6): a foundation developed only
    in private accrues unchecked translation loss. The feedback term `F` is supplied
-   by exposure — critique, use, falsification (§9). Working in the open is thus not
-   a marketing choice but the loop's own requirement. What stays private is not the
-   theory but the **un-projected source** (the raw dialogue, un-distilled notes) and
-   what lies outside the form entirely (domain/market strategy, per blog ADR-023).
+   by exposure — critique, use, falsification (§9). So working in the open isn't a
+   marketing choice: *if* Law 3 holds, the loop recommends its own publication.
+   (Publishing openly also has ordinary good reasons that need no theory.) What
+   stays private is not the theory but the **un-projected source** (the raw
+   dialogue, un-distilled notes) and what lies outside the form entirely
+   (domain/market strategy, kept in a private strategy record).
 
 ---
 
@@ -719,6 +750,22 @@ Honest record of what is unresolved. These are the live research edges.
    isomorphism. `Meaning()` (§7.2) needs an operational grounding to escape
    circularity. Goal `G` is used in §5.2 but is not yet built from the primitives.
    The notation overlaps (α, Φ) need a unified convention.
+7. **The central law is not yet well-formed notation.** ℭ is a tuple, so
+   `R_i(ℭ) ⊂ ℭ` uses `⊂` with no defined sense on tuples, and
+   `I(ℭ) = ⋂_i Meaning(R_i)` needs a constructed common carrier before the
+   intersection means anything. The intended reading is stated in the §7.1
+   notation note (a carrier `Sem` of consequences-for-action, with
+   `Meaning : representations → 𝒫(Sem)`); building `Sem` is the debt. Until then
+   the three flagship formulas (§7.1, §7.2, §7.4's `Model(ℭ) ⊂ ℭ`) are candidate
+   notation, not set theory.
+8. **Intersection vs. clarity — an open tension in Theory B's core.** The
+   identity `I(ℭ)` weakly *shrinks* as valid projections are added (that is what
+   intersections do), while multiprojection clarity says a form gets *clearer*
+   with more consistent projections. The working resolution, stated in §7.4 and
+   not yet formalized: added projections sharpen *confidence* in the surviving
+   core, not its *content* — and only under projection independence, which is
+   exactly what fails when the projections share an author or a model family.
+   Until formalized, this stands as a recorded contradiction, not a theorem.
 
 ---
 
@@ -739,4 +786,4 @@ Honest record of what is unresolved. These are the live research edges.
 
 ---
 
-**Status:** v0.1 (research program). **Last Updated:** 2026-06-28. Licensed CC BY 4.0.
+**Status:** v0.1 (research program). **Last Updated:** 2026-07-01. Licensed CC BY 4.0.

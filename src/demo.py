@@ -17,7 +17,7 @@ judgment, not a proof — but it is a real, runnable check, not a stub.
 
 Usage:
     python demo.py [path.cform.json]      # defaults to example.cform.json
-Requires a model adapter on PATH (the `claude` CLI by default).
+Requires a model adapter on PATH (the `claude` CLI by default). Licensed MIT.
 """
 from __future__ import annotations
 
@@ -44,6 +44,9 @@ def claude(prompt: str) -> str:
     env = {k: v for k, v in os.environ.items()
            if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_BASE_URL")}
     r = subprocess.run([exe, "-p", prompt], capture_output=True, text=True, env=env, timeout=120)
+    if r.returncode != 0:
+        raise RuntimeError(
+            f"model adapter failed (exit {r.returncode}): {(r.stderr or r.stdout).strip()[:200]}")
     return r.stdout.strip()
 
 

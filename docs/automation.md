@@ -28,14 +28,15 @@ agent**. Use whichever fits the moment.
 | Capture source | voice memo and/or a chat DM | voice via an OS shortcut saving audio to a watched folder |
 | Transcription | speech → text, **local** | a local model keeps capture private and offline |
 | Watcher | a session-scoped loop that ingests new captures | plain automation; no intelligence |
-| Triage run | an LLM agent invoked **headlessly** on new captures | this is the only "smart" step |
+| Triage run | an LLM (large language model — the kind of AI behind chat assistants) agent invoked **headlessly** on new captures | this is the only "smart" step |
 | Feedback channel | a chat (Slack/Discord/Telegram/…) the agent posts to | start, questions, completion; optionally two-way |
 
 ## What actually "runs the agent"
 
 A background watcher/daemon is **dumb** automation — it does one deterministic
 thing. The intelligent steps only happen when you **invoke the LLM**: a headless
-agent run, fired per new capture or on a schedule. Nothing triages or acts on its
+agent run (no chat window — it runs and writes files, nobody watching), fired per
+new capture or on a schedule. Nothing triages or acts on its
 own unless you wire that invocation. Be deliberate about when it fires.
 
 ## Safety patterns (the important part)

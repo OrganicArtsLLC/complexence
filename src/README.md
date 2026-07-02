@@ -60,7 +60,8 @@ python demo.py            # needs a model adapter on PATH (claude CLI by default
 
 A sample run: `project -> metaphor`, `translate -> pseudocode`, `invariant round-trip
 = preserved (YES)`, 3 transforms in ~30s. The central claim — *meaning is what
-survives transformation* — executed and checked, not just asserted.
+survives transformation* — run end-to-end and judged by a model, once. Not proof;
+motion.
 
 ## Central-bet experiment — `experiment.py`
 
@@ -81,3 +82,27 @@ With a hardened scorer the conditions tie inside noise (`A 6.3` vs `B 6.7`, delt
 the whole bet* — at a toy 3-hop task both conditions preserve intent, so there is
 nothing for a shared form to save. See [`../ROADMAP.md`](../ROADMAP.md) for the full
 write-up and the Phase-3 plan (harder task, more hops/agents, calibrated judge).
+
+## Lossy-channel experiment — `experiment_v2.py`
+
+v0.2 isolates the variable the v0.1 null pointed at: the channel. The same relay,
+but the text passed between hops goes through word-dropout at rate `p`; condition A
+re-pins the full invariant clean at every hop, B gets only the degraded previous
+text. Fidelity is triangulated three ways (per-claim rubric, reconstruction, holistic
+judge). The docstring carries a pre-registered prediction, written before the run;
+the run artifacts are gitignored, so the ordering is stated, not provable from git
+history.
+
+```bash
+python experiment_v2.py --hops 5 --trials 2 --noise 0.0,0.6
+```
+
+**The first v0.2 run was invalid, and its raw direction went against the prediction.**
+At p=0.6 the adapter returned API-refusal text, refusal text flowed through the relay
+and into the judges, and one pure refusal was scored rubric 1.0. The raw rubric deltas
+(A−B −0.12 at p=0.0, −0.38 at p=0.6) ran opposite the pre-registered signature — but
+the contamination means this is an invalid run whose direction happened to be adverse,
+not clean evidence against the bet. The harness now raises on adapter errors,
+invalidates (rather than scores) refusal outputs, and reports a per-cell validity
+rate; a clean re-run is the open next step. Full write-up in
+[`../ROADMAP.md`](../ROADMAP.md).

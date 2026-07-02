@@ -54,7 +54,7 @@ haven't first run manually.
 
 | Phase | Goal | Exit condition |
 |---|---|---|
-| 0 — Prompt-only MVP | Prove the flow with no build | 7 straight days of inbox processing + 1 brief/day |
+| 0 — Prompt-only MVP (minimum viable product) | Prove the flow with no build | 7 straight days of inbox processing + 1 brief/day |
 | 1 — Light automation | Reduce friction | voice→inbox < 2 min; daily session < 20 min |
 | 2 — Orchestration | One-entry triage | one prompt runs full triage; escalations carry options |
 | 3 — Stability | Boring reliability | < 5% artifacts need major rewrite; no duplicate files |
