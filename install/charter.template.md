@@ -1,7 +1,7 @@
 # Charter — <LAB NAME>
 
 > A scope statement: why this lab exists and what it studies. Structural only.
-> Keep it honest and short. This file lives in your PRIVATE lab, never in the
+> Keep it plain and short. This file lives in your PRIVATE lab, never in the
 > public Complexence repo.
 
 **Installed:** <YYYY-MM-DD>

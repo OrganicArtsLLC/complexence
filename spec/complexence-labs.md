@@ -7,7 +7,7 @@ private observation into public abstraction.
 
 **Status:** Public seed spec — v0.1, instance-agnostic. This is a *proposal for
 structure*, not a validated result; where it names measures (Λ, orientation delta)
-they are **candidate** instruments under the same honesty rules as
+they are **candidate** instruments under the same status rules as
 [`complexence-science.md`](./complexence-science.md) §1a — read them as conjectures
 to be earned, not as established quantities.
 
@@ -27,7 +27,7 @@ to be earned, not as established quantities.
 - [5. The research framework: typed identifiers and the index](#5-the-research-framework-typed-identifiers-and-the-index)
 - [6. Measurement: the legibility measure Λ](#6-measurement-the-legibility-measure-λ)
 - [7. The publishing pipeline](#7-the-publishing-pipeline)
-- [8. What is honestly unresolved](#8-what-is-honestly-unresolved)
+- [8. What is unresolved](#8-what-is-unresolved)
 - [9. Relations](#9-relations)
 
 ---
@@ -297,7 +297,7 @@ Read this before using Λ as if it were a number.
    the product as written is a *dimensional cartoon* — a picture of the intended
    trade-off, not an evaluable expression. This is the same class of debt as the
    `⋂` notation in `complexence-science.md` §7.1, and it is tracked, not hidden.
-2. **Its honest use today is ordinal.** Hold `S` fixed, compare two maps `M₁, M₂`,
+2. **Its defensible use today is ordinal.** Hold `S` fixed, compare two maps `M₁, M₂`,
    and ask *which raises the ratio* — more compression/prediction/actionability for
    less distortion/load. That before-vs-after judgment is real and useful even while
    the absolute number is undefined. An "orientation delta" (§2, §5) is exactly this
@@ -316,7 +316,7 @@ Two of the five are already operational, and give a defensible *partial* measure
 
 `P(S | M)` (how well the map predicts the system) and `C(M)` (the cost of using it)
 map directly onto Theory A's measurable quantities — predictive power and cognitive
-cost/channel effort (`complexence-science.md` §6.3). `L = P/C` is the honest core of
+cost/channel effort (`complexence-science.md` §6.3). `L = P/C` is the defensible core of
 Λ: *a smaller representation is good when it lets an agent navigate better than direct
 exposure to the whole.* The full five-factor Λ is the aspiration; `L = P/C` is what a
 lab can estimate now.
@@ -388,7 +388,7 @@ domain nouns, and it survives a leakage review against `GUARDRAILS.md`. The exac
 
 ---
 
-## 8. What is honestly unresolved
+## 8. What is unresolved
 
 These are the v2 open edges. Each should become an `RQ-NNN` in
 [`../RESEARCH.md`](../RESEARCH.md).

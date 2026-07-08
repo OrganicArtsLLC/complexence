@@ -20,6 +20,6 @@ can actually estimate first:
 - **P(S | M)** — did acting on the map/artifact predict the system's behavior?
 - **C(M)** — what did understanding and using it cost?
 
-Point legibility `L = P(S|M) / C(M)` is the honest core. The full five-factor Λ
+Point legibility `L = P(S|M) / C(M)` is the defensible core. The full five-factor Λ
 (compression, prediction, actionability ÷ distortion, load) stays a comparison
 scaffold until a lab shows a proxy tracking a real outcome (`RQ-009`).

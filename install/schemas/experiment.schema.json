@@ -16,7 +16,7 @@
     "status": {
       "type": "string",
       "enum": ["draft", "running", "done", "invalid"],
-      "description": "'invalid' is a first-class outcome — a contaminated or artifactual run reported honestly (see ROADMAP.md)."
+      "description": "'invalid' is a first-class outcome — a contaminated or artifactual run reported as invalid, not scored (see ROADMAP.md)."
     },
     "opened": { "type": "string", "format": "date" },
     "closed": { "type": ["string", "null"], "format": "date" },

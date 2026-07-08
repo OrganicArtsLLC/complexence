@@ -90,8 +90,8 @@ Key modules:
 
 ### Scientific-integrity norm
 
-This repo tracks results honestly, including null and invalid runs (see the
-existing "honest null result" and "first v0.2 run was invalid" write-ups in
+This repo reports results as they came out, including null and invalid runs (see
+the null-result and "first v0.2 run was invalid" write-ups in
 `src/README.md` and `ROADMAP.md`). Preserve that: report what a run actually showed,
 flag contamination/artifacts, and never present a conjecture, proof-sketch, or
 stubbed operator as an established result. The specs deliberately scope claims as

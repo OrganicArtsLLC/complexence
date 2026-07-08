@@ -2,7 +2,7 @@
 
 **This repository is PUBLIC.** Everything committed here is world-readable, and
 **git history is permanent** — deleting a file in a later commit does *not* remove
-it from history. Assume anything that lands here can be read by anyone, forever,
+it from history. Assume anything committed here can be read by anyone, forever,
 even if you "delete" it afterward.
 
 This repo holds the **method only** (the spec, role prompts, and blank templates).

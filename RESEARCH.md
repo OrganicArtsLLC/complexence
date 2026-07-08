@@ -116,7 +116,7 @@ The seven laws of the Calculus of Cognitive Forms (science §7.5):
 ### Counterexamples (`CEX`)
 
 None recorded yet. A `CEX-NNN` is an abstracted result that counts *against* a public
-claim; the first honest null/adverse runs are written up narratively in
+claim; the null and adverse runs so far are written up, not buried, in
 [`ROADMAP.md`](./ROADMAP.md) and will be assigned IDs as they are distilled.
 
 ---

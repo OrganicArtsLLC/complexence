@@ -9,7 +9,7 @@ research program.
 **Status:** Public, versioned, evolving. This is an open **research program**, not
 a finished science (see §10) — published openly because the theory itself says so
 (§8.5: a foundation developed without feedback drifts). Improve it, fork it,
-falsify it; the prose is **CC BY 4.0**, the code (when it lands) **MIT**.
+falsify it; the prose is **CC BY 4.0**, the code (when it ships) **MIT**.
 
 > Reader's narrative version: the essay
 > [*The Science of Complexence*](https://joshuaayson.com/2026/06/28/science-of-complexence/).
@@ -150,7 +150,7 @@ the thing the capability does.
 ## 3a. Relation to prior work — what it shares, what is distinct
 
 A claim to a level above mathematics, logic, and computer science (§3) has obvious
-neighbors, and the honest move is to name them and say what is shared and what is
+neighbors, and the right move is to name them and say what is shared and what is
 new. The differentiation is a positioning claim to be *earned* by what Complexence
 predicts or unifies that extensions of these do not — the central bet (§9) is one
 such test — but the lines are stateable now.
@@ -584,7 +584,7 @@ Meaning velocity has no off-the-shelf instrument (§9.3), so the applied layer
 proposes a **candidate** proxy: **legibility Λ**, an orientation measure defined in
 [`complexence-labs.md`](./complexence-labs.md) §6. It is introduced there as an
 *ordinal comparison scaffold*, not a validated scalar — the same status as the
-candidate bounds here. Its honest core is point legibility `L = P(S∣M)/C(M)`
+candidate bounds here. Its defensible core is point legibility `L = P(S∣M)/C(M)`
 (predictive power over cognitive cost), which grounds directly in the Theory A
 quantities of §6.3. Whether Λ predicts real performance is the §10.5 bet, restated
 for the applied layer.
@@ -733,7 +733,7 @@ Start with the first; it is a test, not a vibe.
 
 ## 10. Open questions and tensions
 
-Honest record of what is unresolved. These are the live research edges.
+The open record of what is unresolved. These are the live research edges.
 
 1. **Which primitive is deepest?** Potential, distinction, or constraint (§4.2).
    Resolving this fixes the bottom of the ontology.

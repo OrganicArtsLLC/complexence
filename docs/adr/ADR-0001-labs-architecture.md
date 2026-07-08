@@ -62,7 +62,7 @@ Observe → Experiment → Measure → Pattern → Definition → Operator → R
   the [`install/`](../../install/) scaffold + [`complexence-install.sh`](../../scripts/complexence-install.sh),
   and the labs/measurement spec. The **lab roster and role assignments are private** —
   naming which projects are labs is itself lab knowledge (Principle 4).
-- Measurement is subordinate to honesty: the orientation objective and the Λ measure
+- Measurement claims stay subordinate to their evidence: the orientation objective and the Λ measure
   (labs spec §2, §6) are **candidate** instruments, not validated results, held to the
   same rules as `complexence-science.md` §1a.
 - The risk this directive most has to manage is **over-engineering the install before

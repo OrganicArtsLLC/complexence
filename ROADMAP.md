@@ -8,7 +8,7 @@ without feedback drifts ([`spec/complexence-science.md`](./spec/complexence-scie
 
 **Status:** v0.1 — formal spec stable enough to build on and argue with; the
 reference implementation runs (Phase 1) and the measurement harness has its first
-falsifiable experiments (Phase 2 seed). First result: an honest null. Second run
+falsifiable experiments (Phase 2 seed). First result: a null, written up in full. Second run
 (v0.2): invalid, with raw numbers leaning against the prediction, written up
 below, not buried.
 
@@ -52,10 +52,10 @@ Phase 1 onward is the "devops the science" work: the spec gets a reference
 implementation, the implementation gets tests, the tests operationalize the claims,
 and the loop closes: `correct(ℭ, F)` producing the next version.
 
-## Landed so far (the loop in motion)
+## Shipped so far (the loop in motion)
 
 The feedback the §8.5 argument predicts started running within hours of going
-public. Honest framing: the first outside passes came from me putting the spec in
+public. The first outside passes came from me putting the spec in
 front of other frontier models and vetting what came back — solicited, model-assisted
 feedback, not community traction. Genuine external review (minds not under my
 direction) is still pending, and saying so is the point:
@@ -65,7 +65,7 @@ direction) is still pending, and saying so is the point:
   (operator enum aligned to §7.3: added `correct`; `$schema` URI fixed). MIT.
 - **`proofs/channel-capacity-sketch.md`** — the §6.6 bound *derived under three explicit
   (still-unjustified) assumptions*. Contributed + vetted. It relocates the debt to its
-  premises rather than erasing it; honest progress, not a closed result.
+  premises rather than erasing it; progress with the debt still visible, not a closed result.
 - **`src/demo.py`** — the operators run end-to-end against a live model: project →
   translate → a real (if crude) round-trip `invariant_preserved` check. The Phase-2
   measurement-harness seed.
@@ -78,7 +78,7 @@ direction) is still pending, and saying so is the point:
   prediction, written before the run (the run artifacts are gitignored, so the
   ordering is stated, not provable from git history).
 
-### First experiment result — honest negative / inconclusive
+### First experiment result — negative / inconclusive
 
 The first run *looked* like evidence for the bet (A beat B). It was an artifact: the
 v0.1 drift scorer silently defaulted unparseable judgments to `0`, and a single
@@ -118,11 +118,11 @@ leaned the other way. Both facts belong here, in order of importance:
 What changes before the re-run: the harness now rejects refusal/error outputs (a
 nonzero adapter exit raises; a refusal signature invalidates the trial instead of
 scoring it), and every cell reports its validity rate. Then v0.2 runs again, clean.
-Until that lands, the pre-registration stands as an open debt, and this section is
+Until that ships, the pre-registration stands as an open debt, and this section is
 the receipt.
 
 That is the whole point of versioning the science in public: critique, contribution,
-and *honest negative results* all become commits.
+and *negative results* all become commits.
 
 ## v2 — the labs & measurement layer
 
@@ -134,8 +134,8 @@ open questions are indexed in [`RESEARCH.md`](./RESEARCH.md).
 
 | Step | Goal | Done when |
 |---|---|---|
-| **v2.1 — Install scaffold** | Make the method installable | `./scripts/complexence-install.sh` scaffolds `.complexence/` (landed, seed) |
-| **v2.2 — Research framework** | Give the repo a front door | `RESEARCH.md` + typed IDs (`A/D/O/L/H/RQ/ADR/CEX/EXP`) (landed, seed) |
+| **v2.1 — Install scaffold** | Make the method installable | `./scripts/complexence-install.sh` scaffolds `.complexence/` (shipped, seed) |
+| **v2.2 — Research framework** | Give the repo a front door | `RESEARCH.md` + typed IDs (`A/D/O/L/H/RQ/ADR/CEX/EXP`) (shipped, seed) |
 | **v2.3 — Measurement** | Instrument orientation | a lab reports an orientation delta / Λ proxy tracking a real outcome (`RQ-009`) |
 | **v2.4 — Role library** | Extend the runtime | domain roles packaged as installable contracts alongside `chief-of-staff` |
 | **v2.5 — Publishing pipeline** | Close the loop | the first real pattern card promotes a public operator (labs §7) |

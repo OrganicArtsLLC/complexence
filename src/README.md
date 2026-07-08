@@ -75,7 +75,7 @@ the original invariant (median of three model judges).
 python experiment.py --hops 3 --trials 3
 ```
 
-**First result is an honest null.** An early run looked like evidence *for* the bet;
+**First result: a null.** An early run looked like evidence *for* the bet;
 it was a scorer artifact (single-judge variance + parse failures defaulting to 0).
 With a hardened scorer the conditions tie inside noise (`A 6.3` vs `B 6.7`, delta
 −0.3). The finding matches what science §10.5 predicts in advance: *measurability is
