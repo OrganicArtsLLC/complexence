@@ -7,6 +7,10 @@
 # Your working instance: captures, briefs, decisions, maps. NEVER tracked.
 /instance/
 
+# A filled .complexence/ lab scaffold is PRIVATE lab data (spec/complexence-labs.md).
+# The installer refuses to run here; this guards a hand-copied one too.
+.complexence/
+
 # Local, private term denylist used by scripts/check-no-secrets.sh.
 # Keeps your sensitive words local — they never enter the public repo.
 .private-denylist

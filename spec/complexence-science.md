@@ -580,6 +580,15 @@ A good cognitive system increases the rate at which useful meaning becomes
 visible and actionable. The short version I keep coming back to: the mathematics
 of working with minds that think back.
 
+Meaning velocity has no off-the-shelf instrument (§9.3), so the applied layer
+proposes a **candidate** proxy: **legibility Λ**, an orientation measure defined in
+[`complexence-labs.md`](./complexence-labs.md) §6. It is introduced there as an
+*ordinal comparison scaffold*, not a validated scalar — the same status as the
+candidate bounds here. Its honest core is point legibility `L = P(S∣M)/C(M)`
+(predictive power over cognitive cost), which grounds directly in the Theory A
+quantities of §6.3. Whether Λ predicts real performance is the §10.5 bet, restated
+for the applied layer.
+
 ### 8.3 Cognitive forms as the canonical object
 
 The practical claim: today's interface is low-bandwidth —
@@ -683,6 +692,7 @@ falsifiable claims.
 | Externalization | ε | Performance with vs without tools | Cognitive offloading |
 | Recursive depth | R | Number of meta-reasoning iterations | Metacognition |
 | Meaning velocity | — | Useful decisions/artifacts per unit time | (novel) |
+| Legibility | Λ | `L = P(S∣M)/C(M)` ordinal; full Λ in labs §6 (candidate) | Orientation / usability |
 
 **Meaning velocity** has no off-the-shelf instrument, so it needs proxies.
 Candidates, strongest first:
@@ -766,6 +776,12 @@ Honest record of what is unresolved. These are the live research edges.
    core, not its *content* — and only under projection independence, which is
    exactly what fails when the projections share an author or a model family.
    Until formalized, this stands as a recorded contradiction, not a theorem.
+9. **Is the applied legibility measure Λ real, or a comparison scaffold?** The
+   applied layer ([`complexence-labs.md`](./complexence-labs.md) §6) proposes Λ as an
+   orientation instrument and reframes the mission as "engineering orientation." As of
+   v0.1 Λ is ordinal, not cardinal: its factors share no common carrier and are not
+   independent. Promoting it — and showing an orientation delta tracks a real outcome
+   — is the applied face of the §10.5 measurability bet.
 
 ---
 
@@ -775,6 +791,9 @@ Honest record of what is unresolved. These are the live research edges.
   human capability and the eight-level orientation map this theory formalizes (§5.4).
 - **Operating method:** [`complexence-os.md`](./complexence-os.md) — the runtime
   where the Cognitive Form is the kernel object (§8.4).
+- **Labs & measurement:** [`complexence-labs.md`](./complexence-labs.md) — the applied
+  layer that installs the method as labs and operationalizes §9's measures (Λ,
+  orientation delta) without exposing private data.
 - **The layers:** [`../docs/layers.md`](../docs/layers.md) — how prompts become
   agents become an orchestrated runtime; this document is the floor beneath that ladder.
 - **Public essays:** [*Complexence*](https://joshuaayson.com/2026/06/17/complexence/)
@@ -786,4 +805,4 @@ Honest record of what is unresolved. These are the live research edges.
 
 ---
 
-**Status:** v0.1 (research program). **Last Updated:** 2026-07-01. Licensed CC BY 4.0.
+**Status:** v0.1 (research program). **Last Updated:** 2026-07-07. Licensed CC BY 4.0.

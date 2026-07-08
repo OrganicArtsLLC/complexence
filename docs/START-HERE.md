@@ -82,4 +82,6 @@ ln -s ../../scripts/check-no-secrets.sh .git/hooks/pre-commit
 - Role prompts: [`agents/`](../agents/)
 - Blank templates: [`templates/`](../templates/)
 - Stand up your own instance: [`docs/instantiate.md`](./instantiate.md)
+- Make a project repo part of the research loop (a *lab*):
+  [`spec/complexence-labs.md`](../spec/complexence-labs.md)
 - Safety rules: [`GUARDRAILS.md`](../GUARDRAILS.md)

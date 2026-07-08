@@ -124,6 +124,27 @@ the receipt.
 That is the whole point of versioning the science in public: critique, contribution,
 and *honest negative results* all become commits.
 
+## v2 — the labs & measurement layer
+
+A parallel track, additive to the phases above: turn the method into an *installable*
+runtime so real work can feed the science without exposing what the work is. The
+architecture is [`spec/complexence-labs.md`](./spec/complexence-labs.md), decided in
+[`docs/adr/ADR-0001-labs-architecture.md`](./docs/adr/ADR-0001-labs-architecture.md);
+open questions are indexed in [`RESEARCH.md`](./RESEARCH.md).
+
+| Step | Goal | Done when |
+|---|---|---|
+| **v2.1 — Install scaffold** | Make the method installable | `./scripts/complexence-install.sh` scaffolds `.complexence/` (landed, seed) |
+| **v2.2 — Research framework** | Give the repo a front door | `RESEARCH.md` + typed IDs (`A/D/O/L/H/RQ/ADR/CEX/EXP`) (landed, seed) |
+| **v2.3 — Measurement** | Instrument orientation | a lab reports an orientation delta / Λ proxy tracking a real outcome (`RQ-009`) |
+| **v2.4 — Role library** | Extend the runtime | domain roles packaged as installable contracts alongside `chief-of-staff` |
+| **v2.5 — Publishing pipeline** | Close the loop | the first real pattern card promotes a public operator (labs §7) |
+
+The load-bearing caution (labs §8.1, `RQ-007`): **don't over-build the install before
+the method is validated.** v2.1–v2.2 are deliberately thin; v2.3 is where the science
+actually gets tested, and Λ stays a *candidate* measure until a lab shows it predicts
+something (labs §6.2).
+
 ## How to contribute
 
 Issues and pull requests are the feedback term `F`. Argue with the spec, propose a
@@ -132,4 +153,4 @@ implementation. Prose is **CC BY 4.0**; code is **MIT**. Credit where it came fr
 
 ---
 
-**Last Updated:** 2026-07-01.
+**Last Updated:** 2026-07-07.

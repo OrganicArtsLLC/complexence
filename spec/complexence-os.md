@@ -37,6 +37,12 @@ a thought in  ->  one router  ->  specialist roles  ->  durable artifacts  ->  w
 Complexence OS does not replace an orientation map; it *feeds and consumes* one
 (the Cartographer role produces map artifacts).
 
+A deployment of this operating layer into a specific repository is a **lab** — the
+v2 measurement surface that connects running instances back to the science without
+exposing their data. Labs are not a new altitude in this stack; they are where the
+Operating layer runs and gets measured. See
+[`complexence-labs.md`](./complexence-labs.md).
+
 ## 3. Design Principles
 
 | Principle | Meaning |
@@ -218,4 +224,9 @@ Concrete proxies, so "reduced desk friction" can be checked with numbers, not fe
 (capture → an artifact you act on). These are the operating-method-level analog of
 the science's meaning-velocity proxies (`complexence-science.md` §9.3).
 
-**Last Updated:** 2026-06-28
+When an instance is also a **lab**, these same proxies are what an *orientation
+delta* summarizes per experiment ([`complexence-labs.md`](./complexence-labs.md) §6),
+logged in `.complexence/metrics/orientation-log.md` — the bridge from daily practice
+to the research program.
+
+**Last Updated:** 2026-07-07

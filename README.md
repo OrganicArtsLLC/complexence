@@ -13,6 +13,7 @@ This repo is the canonical, open home of the whole stack:
 | **Capability** | orienting and navigating under load (an eight-level orientation map, L0–L7: from "what's in scope" to "what did we learn") | [`spec/complexence-capability.md`](./spec/complexence-capability.md) |
 | **Operating method** | turn raw thought into durable artifacts with a few agent roles — *runnable today* (below) | [`spec/complexence-os.md`](./spec/complexence-os.md) |
 | **Foundation** | the formal science underneath: what has to exist before thinking can (an ontology), the loop it runs (one recursive equation), and the one number that matters — how fast useful meaning moves (meaning velocity) | [`spec/complexence-science.md`](./spec/complexence-science.md) |
+| **Labs & measurement** | the v2 applied layer: install the method as isolated *labs*, measure orientation, and promote only sanitized abstractions back up | [`spec/complexence-labs.md`](./spec/complexence-labs.md) |
 
 Narrative versions live on the blog: [Complexence](https://joshuaayson.com/2026/06/17/complexence/)
 (capability), [Complexence OS](https://joshuaayson.com/2026/06/25/complexence-os/)
@@ -140,17 +141,32 @@ Drop-in files to copy by hand instead: [`editors/copilot/`](./editors/copilot/).
 ## Repository layout
 
 ```text
-spec/         the method specification (start here for the full model)
+spec/         the specifications: capability, os, science, and labs (start here)
+RESEARCH.md   the navigation layer — open research questions + typed-ID registry
 agents/       role prompt contracts (Chief of Staff + 5 specialists)
 editors/      drop-in editor integrations (VS Code Copilot prompt files + instructions)
-templates/    blank, shareable templates for each artifact type
-docs/         START-HERE, layers, bootstrap, instantiation, automation guides
+templates/    blank, shareable templates for each artifact type (incl. pattern card)
+install/      the .complexence/ runtime scaffold that `complexence install` copies
+docs/         START-HERE, layers, bootstrap, instantiation, automation; adr/ decisions
 src/          the science's reference implementation: Cognitive Form schema,
               operators, demo, and the falsifiable experiments (MIT)
 proofs/       candidate derivations for the science's claimed bounds
-scripts/      helper + the pre-commit secret guard
+scripts/      helper scripts, the pre-commit secret guard, and complexence-install.sh
 instance/     YOUR private data — gitignored, never committed (you create this)
 ```
+
+### v2: the labs architecture
+
+Complexence is growing from a personal method into an **installable, measurable
+runtime**. Any repo can `./scripts/complexence-install.sh` a thin `.complexence/`
+scaffold and become a *lab*: it runs the roles, measures orientation, and promotes
+only **sanitized abstractions** back to this public repo — never raw data. The public
+repo is grammar; labs are knowledge; the flow between them is one-way. A lab
+*composes with* the instance model above (your instance is simply the first lab); it
+does not replace it. The full
+design is [`spec/complexence-labs.md`](./spec/complexence-labs.md), decided in
+[`docs/adr/ADR-0001-labs-architecture.md`](./docs/adr/ADR-0001-labs-architecture.md),
+and the live questions are indexed in [`RESEARCH.md`](./RESEARCH.md).
 
 ## Standing up your own instance
 

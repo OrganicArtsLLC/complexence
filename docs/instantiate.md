@@ -38,6 +38,13 @@ the content changes.
 
 6. **Run Phase 0 manually** for seven days before automating anything.
 
+> **Instance vs. lab.** These steps stand up an *instance* — the daily method. If
+> you also want the repo to feed the research program (log experiments and
+> orientation deltas), additionally install the thin `.complexence/` research
+> overlay: [`spec/complexence-labs.md`](../spec/complexence-labs.md) §4. An
+> instance without a lab is complete; a lab is the optional scientific layer on
+> top.
+
 ## What stays fixed vs. what changes
 
 | Stays fixed (the method) | Changes per instance (the content) |

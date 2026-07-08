@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/OrganicArtsLLC/complexence/install/schemas/experiment.schema.json",
+  "title": "Complexence lab experiment (EXP) front-matter",
+  "description": "Validates the YAML front-matter of a .complexence/experiments/EXP-NNN.md file. Grammar only: the schema is public; the instances it validates are private lab data. See spec/complexence-labs.md §5.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EXP-[0-9]{3,}$",
+      "description": "Unique within the lab, e.g. EXP-001."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "running", "done", "invalid"],
+      "description": "'invalid' is a first-class outcome — a contaminated or artifactual run reported honestly (see ROADMAP.md)."
+    },
+    "opened": { "type": "string", "format": "date" },
+    "closed": { "type": ["string", "null"], "format": "date" },
+    "depends_on": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[AD]-[0-9]{3,}$" },
+      "description": "Public Assumption/Definition ids this relies on."
+    },
+    "tests": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^H-[0-9]{3,}$" },
+      "description": "Public Hypothesis ids this tests."
+    },
+    "updates": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^D-[0-9]{3,}$" },
+      "description": "Public Definition ids this would revise."
+    },
+    "supports": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^L-[0-9]{3,}$" },
+      "description": "Public Law ids this provides evidence for."
+    },
+    "contradicts": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[ADLHO]-[0-9]{3,}$" },
+      "description": "Public claims this counts against; a confirmed one abstracts to a CEX card."
+    },
+    "orientation_delta": {
+      "type": ["number", "null"],
+      "description": "Ordinal before/after change in orientation, in the lab's own units (labs §6.2). Null when not yet measured. NOT a validated cardinal quantity."
+    }
+  }
+}

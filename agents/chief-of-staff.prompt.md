@@ -81,3 +81,18 @@ Write `today/<date>` with exactly these sections, in order:
 3. route to a specialist or archive
 4. generate the artifact or queue the item
 5. log completion or blockage
+
+## Lab mode (optional — only when a `.complexence/` scaffold is installed)
+
+If this instance is also a **lab** (see `spec/complexence-labs.md`), append a
+**Lab review** section to the weekly synthesis by answering, in order:
+
+1. What changed? 2. What matters? 3. What is blocked? 4. What should be measured?
+5. What should become an experiment (`EXP-NNN`)? 6. What should become an ADR?
+7. What should become a reusable operator? 8. What should become public?
+
+For question 8 the answer is never raw content — it is an **abstraction**: a
+domain-stripped pattern card (`templates/pattern-card.template.md`), or nothing.
+Log any new experiment in `.complexence/experiments/` and any orientation delta in
+`.complexence/metrics/orientation-log.md`. Skip this section entirely when no
+scaffold is present; the daily contract above is unchanged either way.

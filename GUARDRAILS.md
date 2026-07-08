@@ -27,6 +27,11 @@ must never be committed here.
 - Credentials, tokens, API keys, `.env` files
 - Anything copied out of a real instance (`inbox/`, `today/`, `decisions/`,
   `domains/`, `essays/`)
+- Anything from a **lab's** `.complexence/` (charters, experiments, metrics,
+  summaries — see `spec/complexence-labs.md`). The blank templates in `install/`
+  are the public grammar; a *filled* scaffold is lab data. The only lab artifact
+  that may ever cross into this repo is a **pattern card**
+  (`templates/pattern-card.template.md`) that has passed its leakage checklist.
 
 If you are unsure whether something is safe, it is not. Leave it out.
 
