@@ -148,6 +148,7 @@ editors/      drop-in editor integrations (VS Code Copilot prompt files + instru
 templates/    blank, shareable templates for each artifact type (incl. pattern card)
 install/      the .complexence/ runtime scaffold that `complexence install` copies
 docs/         START-HERE, layers, bootstrap, instantiation, automation; adr/ decisions
+              system-cartography.md — how to map a system you did not build
 src/          the science's reference implementation: Cognitive Form schema,
               operators, demo, and the falsifiable experiments (MIT)
 proofs/       candidate derivations for the science's claimed bounds
