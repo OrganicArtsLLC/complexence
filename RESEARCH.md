@@ -113,6 +113,13 @@ The seven laws of the Calculus of Cognitive Forms (science §7.5):
 | `A-001` | The ontology's primitive set is minimal and generative | science §4.3 |
 | `A-002` | `Meaning()` can be grounded operationally as consequences-for-action under a goal | science §7.1 note |
 
+### Architecture Decisions (`ADR`)
+
+| ID | Decision | Date |
+|---|---|---|
+| `ADR-0001` | Labs architecture — `.complexence/` runtime + Λ measure + one-way publish pipeline | 2026-07 |
+| `ADR-0002` | Four-plane architecture — Complexence as cognitive relief system (Memory · Meaning · Governance · Attention) | 2026-07-29 |
+
 ### Counterexamples (`CEX`)
 
 None recorded yet. A `CEX-NNN` is an abstracted result that counts *against* a public

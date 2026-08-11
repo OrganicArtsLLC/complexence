@@ -55,7 +55,36 @@ Operating layer runs and gets measured. See
 | One artifact per role | Prevents file sprawl; each role owns one output type. |
 | Minimum viable day | On depleted days, capture only. Everything else can wait 48h. |
 
-## 4. Core Loop
+## 4. Internal Anatomy
+
+Every running instance operates across four architectural planes. These are not
+layers (implying a single linear stack) but cross-cutting domains of
+responsibility — each loop in a Complexence instance touches all four.
+
+| Plane | Responsibility | Invariant |
+|---|---|---|
+| **Memory** | Durable facts, events, documents, provenance | Memory without meaning creates accumulation. |
+| **Meaning** | Entities, relationships, obligations, operational state | Meaning without governance creates uncontrolled interpretation. |
+| **Governance** | Rules, authority, confidence, autonomy boundaries | Governance without attention creates invisible control. |
+| **Attention** | What the human sees now, later, on demand, or never | Attention without compression recreates overwhelm. |
+
+The Complexence loop is the flow through all four:
+
+```
+Reality → Memory → Meaning → Governance → Attention → act → Reality
+```
+
+The practical north star:
+
+> Nothing should reach attention directly from raw data.  
+> Nothing should leave attention without an explicit durable state transition.
+
+See [`docs/adr/ADR-0002-cognitive-relief-four-plane-architecture.md`](../docs/adr/ADR-0002-cognitive-relief-four-plane-architecture.md)
+for the full architectural specification, including the loop contract schema,
+the canonical object schemas, and the relationship between Complexence and
+cognitive relief systems.
+
+## 5. Core Loop
 
 ```text
 Capture -> Route -> Produce -> Review -> Govern -> (repeat)
@@ -69,7 +98,7 @@ Capture -> Route -> Produce -> Review -> Govern -> (repeat)
 | Review | Operator | daily brief | accept / queue / block decisions |
 | Govern | Operator + Chief of Staff | week of artifacts | weekly synthesis + focus |
 
-## 5. Role Roster
+## 6. Role Roster
 
 One router and a capped set of specialists. Start with these six. Do not add a
 seventh until the first six are boring and reliable.
@@ -90,7 +119,7 @@ may run both as a single agent.
 
 Each role is defined by a prompt contract under `agents/`.
 
-## 6. Artifact Contracts
+## 7. Artifact Contracts
 
 All contracts are markdown. An instance must implement every contract below.
 
@@ -117,7 +146,7 @@ owner; review date.
 > "Asset" generalizes to whatever you track: code repositories, services,
 > dashboards, runbooks, documents. Keep the columns; change the noun.
 
-## 7. Operating Schema
+## 8. Operating Schema
 
 ### 7.1 Categories
 
@@ -150,7 +179,7 @@ A role may interrupt the operator only for: legal risk; money risk; sensitive
 relationship issue; publishing approval; confidence below threshold. Everything
 else proceeds without interruption.
 
-## 8. Cadence
+## 9. Cadence
 
 ### 8.1 Daily
 
@@ -166,7 +195,7 @@ else proceeds without interruption.
 4. archive low-value residue
 5. set next-week operating focus
 
-## 9. Adoption Phases
+## 10. Adoption Phases
 
 | Phase | Goal | Exit Condition |
 |---|---|---|
@@ -177,7 +206,7 @@ else proceeds without interruption.
 
 Do not start a phase before the previous phase's exit condition holds.
 
-## 10. Instantiation Protocol
+## 11. Instantiation Protocol
 
 To stand up a new instance:
 
@@ -190,7 +219,7 @@ To stand up a new instance:
    daily-brief sections. Portability depends on this.
 6. **Run Phase 0 manually** for 7 days before automating anything.
 
-### 10.1 What stays fixed vs. what changes
+### 11.1 What stays fixed vs. what changes
 
 | Stays fixed (the method) | Changes per instance (the content) |
 |---|---|
@@ -198,7 +227,7 @@ To stand up a new instance:
 | Confidence rubric, routing policy | Decision owners, escalation contacts |
 | Daily/weekly cadence, phase gates | Sensitivity rules, what counts as "risk" |
 
-## 11. Failure Modes
+## 12. Failure Modes
 
 | Failure Mode | Description | Corrective Action |
 |---|---|---|
@@ -209,7 +238,7 @@ To stand up a new instance:
 | Capture gap | Days with no inbox | Allow minimum-viable-day (capture only) |
 | Leakage | Sensitive content exposed | Private instance root, no auto-publish path |
 
-## 12. Metrics
+## 13. Metrics
 
 - Throughput: inbox-zero within 24h (target ≥ 80% of days); daily top-3 produced
   (target 100% of workdays); weekly synthesis (target 1/week).
